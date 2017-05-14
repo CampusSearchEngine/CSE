@@ -4,15 +4,21 @@ import java.io.IOException;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
+import org.htmlparser.filters.AndFilter;
+import org.htmlparser.filters.NotFilter;
 import org.htmlparser.filters.OrFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.nodes.TagNode;
+import org.htmlparser.nodes.TextNode;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.sun.org.apache.xpath.internal.operations.And;
 
 /*
- *	extract useful content in a page(title, h1~h5 , p , a ...) into another html 
- *  with the most out tag is <document>
+ *	extract useful content in a page(title, h1~h5 , p , a ...) into a json
  *  current elements:
  *  <type>		: html
  *  <title> 	: html title
@@ -44,54 +50,67 @@ public class HtmlExtractor implements Extractor{
 			NodeList nodeList = parser.parse(orFilter);
 			Node[] nodeArray = nodeList.toNodeArray();
 			
-			TagNode docNode = new TagNode();
-			docNode.setTagName("document");
-			TagNode typeNode = new TagNode();
-			typeNode.setTagName("type");
-			typeNode.setText("html");
-			TagNode titleNode = new TagNode();
-			titleNode.setTagName("title");
-			TagNode URINode = new TagNode();
-			URINode.setTagName("URI");
-			URINode.setText(URI);
-			TagNode absNode = new TagNode();
-			absNode.setTagName("content");
-			TagNode ancNode = new TagNode();
-			ancNode.setTagName("anchor");
-
-			docNode.getChildren().add(titleNode);
-			docNode.getChildren().add(typeNode);
-			docNode.getChildren().add(URINode);
-			docNode.getChildren().add(absNode);
-			docNode.getChildren().add(ancNode);
+			JSONObject json = new JSONObject();
 			
 			String absString = new String();
 			String anchorString = new String();
 			
 			for(Node node : nodeArray){
+				
 				if(titleFilter.accept(node)){
-					titleNode.setText(node.getText());
+					json.put("title",node.getChildren().elementAt(0).getText());
 				}
 				else if(pFilter.accept(node) || h1Filter.accept(node) || h2Filter.accept(node) ||
 						h3Filter.accept(node) || h4Filter.accept(node) || h5Filter.accept(node) ){
-					absString += " " + node.getText();
+					absString += digText(node);
 				}
 				else if(aFilter.accept(node)){
-					anchorString += " " + node.getText();
+					anchorString += digText(node);
 				}
 			}
 			
-			absNode.setText(absString);
-			ancNode.setText(anchorString);
+			json.put("type", "html");
+			json.put("URI", URI);
+			json.put("content", absString);
+			json.put("anchor", anchorString);
 			
 			BufferedWriter bWriter = IO.getWriter(toPath);
-			bWriter.write(docNode.toHtml());
+			bWriter.write(json.toString());
 			bWriter.flush();
 			bWriter.close();
-		} catch (ParserException | IOException e) {
+		} catch (ParserException | IOException | JSONException e) {
 			e.printStackTrace();
 		}
 		
 	}
-
+	
+	static public void main(String[] args){
+		HtmlExtractor pExtractor = new HtmlExtractor();
+		pExtractor.extract(args[0], args[1]);
+	}
+	
+	/*
+	 * get contained plain text in a html tag
+	 * assuming every first-level subNode is a line, and its leaf node contains the text 
+	 * */
+	String digText(Node node){
+		String text = new String();
+		if(node.getChildren() != null){
+			for(int i = 0; i < node.getChildren().size(); i++){
+				Node subNode = node.getChildren().elementAt(i);
+				while(subNode.getChildren() != null)
+					subNode = subNode.getChildren().elementAt(0);
+				if(subNode instanceof TextNode){
+					String nodeText = subNode.getText();
+					nodeText = nodeText.replaceAll("(&nbsp);", "");
+					nodeText = nodeText.replaceAll("\" \\u002B entry\\u005B\"title\"] \\u002B \"", "");
+					if(!nodeText.startsWith("a href=") && nodeText.length() > 0){
+						System.out.println(nodeText);
+						text += " " + nodeText;
+					}
+				}
+			}
+		}
+		return text;
+	}
 }

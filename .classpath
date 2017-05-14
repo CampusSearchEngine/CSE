@@ -57,6 +57,7 @@
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-context-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-core-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-expression-3.0.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="PDF/fontbox-2.0.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="htmlparser/src0_82.jar"/>
 	<classpathentry kind="lib" path="htmlparser/lib/filterbuilder.jar"/>

@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import org.apache.pdfbox.tools.ExtractText;
 import org.htmlparser.nodes.TagNode;
+import org.htmlparser.util.NodeList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*
- *	extract the content in a pdf into another html 
- *  with the most out tag is <document>
+ *	extract the content in a pdf into a json
  *  current elements:
  *  <type>		: pdf
  *  <title> 	: pdf title (first line in txt file)
@@ -31,31 +33,23 @@ public class PDFExtractor implements Extractor {
 			}
 			bReader.close();
 			
-			TagNode docNode = new TagNode();
-			docNode.setTagName("document");
-			TagNode typeNode = new TagNode();
-			typeNode.setTagName("type");
-			typeNode.setText("pdf");
-			TagNode titleNode = new TagNode();
-			titleNode.setTagName("title");
-			titleNode.setText(titleStr);
-			TagNode URINode = new TagNode();
-			URINode.setTagName("URI");
-			URINode.setText(URI);
-			TagNode absNode = new TagNode();
-			absNode.setTagName("content");
-			absNode.setText(conStr);
+			JSONObject json = new JSONObject();
+			json.put("type", "pdf");
+			json.put("title", titleStr);
+			json.put("URI", URI);
+			json.put("content", conStr);
 			
-			docNode.getChildren().add(titleNode);
-			docNode.getChildren().add(typeNode);
-			docNode.getChildren().add(URINode);
-			docNode.getChildren().add(absNode);
 			
 			BufferedWriter bWriter = IO.getWriter(toPath);
-			bWriter.write(docNode.toHtml());
+			bWriter.write(json.toString());
 			bWriter.close();
-		} catch (IOException e) {
+		} catch (IOException | JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	static public void main(String[] args){
+		PDFExtractor pExtractor = new PDFExtractor();
+		pExtractor.extract(args[0], args[1]);
 	}
 }
