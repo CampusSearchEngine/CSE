@@ -91,7 +91,7 @@ public class HtmlExtractor implements Extractor{
 	
 	/*
 	 * get contained plain text in a html tag
-	 * assuming every first-level subNode is a line, and its leaf node contains the text 
+	 * assuming every first-level subNode is a linear structure, and its leaf node contains the text 
 	 * */
 	String digText(Node node){
 		String text = new String();

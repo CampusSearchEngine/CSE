@@ -8,6 +8,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/pagerank"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/pageExtract"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/PDF"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/DOC"/>
         <property name="context-root" value="CSE"/>
         <property name="java-output-path" value="/CSE/bin"/>
     </wb-module>

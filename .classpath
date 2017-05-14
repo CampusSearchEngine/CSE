@@ -7,6 +7,7 @@
 	<classpathentry kind="src" path="pagerank"/>
 	<classpathentry kind="src" path="pageExtract"/>
 	<classpathentry kind="src" path="PDF"/>
+	<classpathentry kind="src" path="DOC"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-launcher-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/aopalliance-1.0.jar"/>
@@ -47,8 +48,6 @@
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/mg4j-1.0.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/minlog-1.2.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/org.restlet-1.1.10.jar"/>
-	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/poi-2.5.1-final-20040804.jar"/>
-	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/poi-scratchpad-2.5.1-final-20040804.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/reflectasm-0.8.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/servlet-api-2.5-6.1.14.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-aop-3.0.5.RELEASE.jar"/>
@@ -58,6 +57,15 @@
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-core-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/spring-expression-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="PDF/fontbox-2.0.5.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-examples-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-excelant-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-ooxml-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/poi-scratchpad-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="htmlparser/src0_82.jar"/>
 	<classpathentry kind="lib" path="htmlparser/lib/filterbuilder.jar"/>
