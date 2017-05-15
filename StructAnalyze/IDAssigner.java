@@ -26,7 +26,8 @@ public class IDAssigner {
 		
 		DirIter iter = new DirIter(MirrorPath);
 		while(iter.hasNext()){
-			IDMap.put(iter.next(), ++maxID);
+			String URI = iter.next().replaceAll(MirrorPath+"\\\\", "");
+			IDMap.put(URI, ++maxID);
 		}
 		return IDMap;
 	}
@@ -42,10 +43,13 @@ public class IDAssigner {
 			BufferedWriter bWriter = new BufferedWriter(outputStreamWriter);
 			
 			Iterator<Entry<String, Integer>> iterator = IDMap.entrySet().iterator();
+			int count = 0;
 			while (iterator.hasNext()) {
+				if(count++ % 10000 == 0)
+					System.out.println(count + "/" + IDMap.size() + " Entires Written");
 				Entry<String, Integer> entry = iterator.next();
 				int type = FileValidator.validate(entry.getKey());
-				if(type != FileValidator.INVALID)
+				if(type != FileValidator.INVALID && type != FileValidator.WDOC)
 					bWriter.write(entry.getKey() + "-->" + entry.getValue() + "-->" + type + "\n");
 			}
 			bWriter.close();

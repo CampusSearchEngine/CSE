@@ -52,6 +52,6 @@ public class PDFExtractor implements Extractor {
 	
 	static public void main(String[] args){
 		PDFExtractor pExtractor = new PDFExtractor();
-		pExtractor.extract(args[0], args[1], "utf-8", int ID);
+		pExtractor.extract(args[0], args[1], "utf-8", 0);
 	}
 }

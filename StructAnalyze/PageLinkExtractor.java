@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -7,6 +8,7 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.Map.Entry;
 
+import org.apache.poi.hslf.util.SystemTimeUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -53,26 +55,40 @@ public class PageLinkExtractor {
 	 */
 	public void scanPageLink(String MirrorPath) {
 		DirIter iter = new DirIter(MirrorPath);
-
+		
+		int count = 0;
 		while (iter.hasNext()) {
-			String URI = iter.next();
-			int type = FileValidator.validate(URI);
+			if(count++ % 10000 == 0)
+				System.out.println(count + "/" + iter.getCount() + " Pages Analyzed");
+			String localURI = iter.next();
+			String remoteURI = localURI.replaceAll(MirrorPath+"\\\\", "");
+			String host = remoteURI.split("\\\\")[0];
+			int type = FileValidator.validate(remoteURI);
 			// process only HTML files
 			if(type == FileValidator.HTML){
-				int rootID = IDMap.get(URI);
+				int rootID = IDMap.get(remoteURI);
 				Vector<Integer> childernID = new Vector<Integer>();
 				
-				Set<String> sublinks = extracLinks(URI, null);
-				
+				Set<String> sublinks = extracLinks(localURI, null);
+				/*if(sublinks.size() > 0){
+					System.out.println(remoteURI + " has " + sublinks.size() + " outlinks");
+				}*/
 				Iterator<String> linkIter = sublinks.iterator();
 				while(linkIter.hasNext()){				//find every subURI's corresponding ID, if not null, add to childrenID
-					String subURI = linkIter.next();
+					String subURI = host + linkIter.next();
+					subURI = subURI.replaceAll("#dqwz", "");
+					subURI = subURI.replaceAll("http://", "");
+					subURI = subURI.replaceAll("/", "\\\\");
+					
+					System.out.println(subURI);
 					Integer subID = IDMap.get(subURI);
 					if(subID != null){
 						childernID.addElement(subID);
 					}
 				}
-				
+				/*if(sublinks.size() > 0){
+					System.out.println("with " + childernID.size() + " exist");
+				}*/
 				linkMap.put(rootID, childernID);
 			}
 		}
@@ -84,7 +100,14 @@ public class PageLinkExtractor {
 
 		Set<String> links = new HashSet<String>();
 		try {
-			Parser parser = new Parser(url);
+			BufferedReader bReader = IO.getReader(url);
+			String html = new String(), line;
+			while((line = bReader.readLine()) != null)
+				html += line;
+			bReader.close();
+			
+			Parser parser = new Parser();
+			parser.setInputHTML(html);
 			parser.setEncoding("utf-8");
 			// 过滤 <frame >标签的 filter，用来提取 frame 标签里的 src 属性所表示的链接
 			NodeFilter frameFilter = new NodeFilter() {
@@ -122,7 +145,7 @@ public class PageLinkExtractor {
 						links.add(frameUrl);
 				}
 			}
-		} catch (ParserException e) {// 捕捉parser的异常
+		} catch (ParserException | IOException e) {// 捕捉parser的异常
 			e.printStackTrace();
 		}
 		return links;
@@ -141,7 +164,7 @@ public class PageLinkExtractor {
 				bufferedWriter.write(entry.getKey() + ":" );
 				
 				Vector<Integer> subIDs = entry.getValue();
-				if (subIDs != null) {
+				if (subIDs != null && subIDs.size() > 0) {
 					for(int i = 0; i < subIDs.size() - 1; i++){
 						bufferedWriter.write(subIDs.elementAt(i) + "," );
 					}
@@ -154,11 +177,12 @@ public class PageLinkExtractor {
 	}
 	
 	/*
-	 * usage : <pageList> <output>
+	 * usage : <pageList> <mirrorPath> <output>
 	 * */
 	public static void main(String[] args){
 		PageLinkExtractor pExtractor = new PageLinkExtractor();
 		pExtractor.readIDMap(args[0]);
-		pExtractor.saveLinkMap(args[1]);
+		pExtractor.scanPageLink(args[1]);
+		pExtractor.saveLinkMap(args[2]);
 	}
 }

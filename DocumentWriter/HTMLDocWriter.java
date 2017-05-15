@@ -25,12 +25,14 @@ public class HTMLDocWriter implements DocumentWriter {
 			Field anchorField = new Field("anchor", json.getString("anchor"), Store.YES, Index.ANALYZED);
 			Field URIField = new Field("URI", json.getString("URI"), Store.YES, Index.NOT_ANALYZED);
 			Field typeField = new Field("type", "html", Store.YES, Index.NOT_ANALYZED);
+			Field IDField = new Field("ID", json.getString("ID"), Store.YES, Index.NOT_ANALYZED);
 			
 			document.add(titleField);
 			document.add(contentField);
 			document.add(anchorField);
 			document.add(URIField);
 			document.add(typeField);
+			document.add(IDField);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

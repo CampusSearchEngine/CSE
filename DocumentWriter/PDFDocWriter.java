@@ -25,11 +25,13 @@ public class PDFDocWriter implements DocumentWriter {
 			Field contentField = new Field("content", json.getString("content"),Store.YES,Index.ANALYZED);
 			Field URIField = new Field("URI", json.getString("URI"), Store.YES, Index.NOT_ANALYZED);
 			Field typeField = new Field("type", "pdf", Store.YES, Index.NOT_ANALYZED);
+			Field IDField = new Field("ID", json.getString("ID"), Store.YES, Index.NOT_ANALYZED);
 			
 			document.add(titleField);
 			document.add(contentField);
 			document.add(URIField);
 			document.add(typeField);
+			document.add(IDField);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
