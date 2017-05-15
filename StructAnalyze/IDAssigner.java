@@ -24,7 +24,7 @@ public class IDAssigner {
 		IDMap = new HashMap<String, Integer>();
 		int maxID = -1;
 		
-		MirrorIter iter = new MirrorIter(MirrorPath);
+		DirIter iter = new DirIter(MirrorPath);
 		while(iter.hasNext()){
 			IDMap.put(iter.next(), ++maxID);
 		}

@@ -7,15 +7,15 @@ import java.util.Vector;
 import org.archive.util.Iteratorable;
 
 /*
- * an iterator to iter every file in the Mirror path
+ * an iterator to iter every file in the  rootpath
  * */
-public class MirrorIter extends Iteratorable {
+public class DirIter extends Iteratorable {
 	
 	String rootPath;
 	Vector<String> files;
 	int pointer;
 	
-	public MirrorIter(String rootPath) {
+	public DirIter(String rootPath) {
 		super(null);
 		this.rootPath = rootPath;
 		this.files = new Vector<String>();

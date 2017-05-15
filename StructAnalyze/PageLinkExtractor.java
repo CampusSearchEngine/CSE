@@ -52,7 +52,7 @@ public class PageLinkExtractor {
 	 * scan every page in MirrorPath to get its page links
 	 */
 	public void scanPageLink(String MirrorPath) {
-		MirrorIter iter = new MirrorIter(MirrorPath);
+		DirIter iter = new DirIter(MirrorPath);
 
 		while (iter.hasNext()) {
 			String URI = iter.next();

@@ -8,9 +8,13 @@ public class FileValidator {
 	static final int DOC = 1;
 	static final int PDF = 2;
 	
-	static final String HTML_REGEX = ".*\\.(html|htl)";
-	static final String DOC_REGEX = ".*\\.(doc|docx)";
-	static final String PDF_REGEX = ".*\\.(PDF|pdf)";
+	static final String HTML_REGEX = ".*\\.(html|htl)$";
+	static final String DOC_REGEX = ".*\\.(doc|docx)$";
+	static final String PDF_REGEX = ".*\\.(PDF|pdf)$";
+	
+	static final String HTML_SUFFIX = ".(html|htl)";
+	static final String DOC_SUFFIX = ".(doc|docx)";
+	static final String PDF_SUFFIX = ".(PDF|pdf)";
 	
 	static int validate(String filename){
 		if(valiHtml(filename))
@@ -23,21 +27,24 @@ public class FileValidator {
 	}
 	
 	static boolean valiHtml(String filename){
-		Pattern pattern = Pattern.compile(HTML_REGEX);
+		/*Pattern pattern = Pattern.compile(HTML_REGEX);
 		Matcher matcher = pattern.matcher(filename);
-		return matcher.matches();
+		return matcher.matches();*/
+		return filename.endsWith(HTML_SUFFIX);
 	}
 	
 	static boolean valiDOC(String filename){
-		Pattern pattern = Pattern.compile(DOC_REGEX);
+		/*Pattern pattern = Pattern.compile(DOC_REGEX);
 		Matcher matcher = pattern.matcher(filename);
-		return matcher.matches();
+		return matcher.matches();*/
+		return filename.endsWith(DOC_SUFFIX);
 	}
 	
 	static boolean valiPDF(String filename){
-		Pattern pattern = Pattern.compile(PDF_REGEX);
+		/*Pattern pattern = Pattern.compile(PDF_REGEX);
 		Matcher matcher = pattern.matcher(filename);
-		return matcher.matches();
+		return matcher.matches();*/
+		return filename.endsWith(PDF_SUFFIX);
 	}
 	
 }
