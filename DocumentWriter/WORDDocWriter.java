@@ -15,14 +15,14 @@ public class WORDDocWriter implements DocumentWriter {
 
 	@Override
 	public Document Json2Doc(JSONObject json) {
-Document document = new Document();
-		
+		Document document = new Document();
+
 		try {
 			Field titleField = new Field("title", json.getString("title"), Store.YES, Index.NOT_ANALYZED);
-			Field contentField = new Field("content", json.getString("content"),Store.YES,Index.ANALYZED);
+			Field contentField = new Field("content", json.getString("content"), Store.YES, Index.ANALYZED);
 			Field URIField = new Field("URI", json.getString("URI"), Store.YES, Index.NOT_ANALYZED);
 			Field typeField = new Field("type", "word", Store.YES, Index.NOT_ANALYZED);
-			
+
 			document.add(titleField);
 			document.add(contentField);
 			document.add(URIField);
@@ -30,7 +30,7 @@ Document document = new Document();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return document;
 	}
 

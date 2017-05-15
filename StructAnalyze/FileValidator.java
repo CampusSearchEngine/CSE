@@ -7,14 +7,16 @@ public class FileValidator {
 	static final int HTML = 0;
 	static final int DOC = 1;
 	static final int PDF = 2;
+	static final int WDOC = 3;
 	
-	static final String HTML_REGEX = ".*\\.(html|htl)$";
+	static final String HTML_REGEX = ".*\\.html$";
 	static final String DOC_REGEX = ".*\\.(doc|docx)$";
 	static final String PDF_REGEX = ".*\\.(PDF|pdf)$";
 	
-	static final String HTML_SUFFIX = ".(html|htl)";
-	static final String DOC_SUFFIX = ".(doc|docx)";
-	static final String PDF_SUFFIX = ".(PDF|pdf)";
+	static final String HTML_SUFFIX = "\\.html";
+	static final String DOC_SUFFIX = "\\.(doc|docx)";
+	static final String PDF_SUFFIX = "\\.(PDF|pdf)";
+	static final String WDOC_SUFFIX = "\\.wdoc";
 	
 	static int validate(String filename){
 		if(valiHtml(filename))
@@ -23,6 +25,8 @@ public class FileValidator {
 			return DOC;
 		if(valiPDF(filename))
 			return PDF;
+		if(valiWDOC(filename))
+			return WDOC;
 		return INVALID;
 	}
 	
@@ -47,4 +51,7 @@ public class FileValidator {
 		return filename.endsWith(PDF_SUFFIX);
 	}
 	
+	static boolean valiWDOC(String filename){
+		return filename.endsWith(WDOC_SUFFIX);
+	}
 }
