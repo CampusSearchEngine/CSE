@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
@@ -10,12 +11,15 @@ import org.htmlparser.filters.OrFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.nodes.TagNode;
 import org.htmlparser.nodes.TextNode;
+import org.htmlparser.util.EncodingChangeException;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.sun.org.apache.xpath.internal.operations.And;
+
+import sun.util.logging.resources.logging_es;
 
 /*
  *	extract useful content in a page(title, h1~h5 , p , a ...) into a json
@@ -29,10 +33,17 @@ import com.sun.org.apache.xpath.internal.operations.And;
 public class HtmlExtractor implements Extractor{
 	
 	@Override
-	public void extract(String URI, String toPath) {
+	public void extract(String URI, String toPath, String encoding, int ID) {
 		try {
-			Parser parser = new Parser(URI);
-			parser.setEncoding("utf-8");
+			BufferedReader bReader = IO.getReader(URI);
+			String html = new String(), line;
+			while((line = bReader.readLine()) != null)
+				html += line;
+			bReader.close();
+			
+			Parser parser = new Parser();
+			parser.setInputHTML(html);
+			parser.setEncoding(encoding);
 			
 			TagNameFilter titleFilter = new TagNameFilter("title");
 			TagNameFilter pFilter = new TagNameFilter("p");
@@ -58,7 +69,8 @@ public class HtmlExtractor implements Extractor{
 			for(Node node : nodeArray){
 				
 				if(titleFilter.accept(node)){
-					json.put("title",node.getChildren().elementAt(0).getText());
+					if(node.getChildren() != null)
+						json.put("title",node.getChildren().elementAt(0).getText());
 				}
 				else if(pFilter.accept(node) || h1Filter.accept(node) || h2Filter.accept(node) ||
 						h3Filter.accept(node) || h4Filter.accept(node) || h5Filter.accept(node) ){
@@ -73,20 +85,31 @@ public class HtmlExtractor implements Extractor{
 			json.put("URI", URI);
 			json.put("content", absString);
 			json.put("anchor", anchorString);
-			
+			json.put("ID", ID);
+
 			BufferedWriter bWriter = IO.getWriter(toPath);
 			bWriter.write(json.toString());
 			bWriter.flush();
 			bWriter.close();
 		} catch (ParserException | IOException | JSONException e) {
+			if(e instanceof EncodingChangeException){
+				if(encoding.equals("utf-8")){		// if encountering encoding problem, just switch encoding and retry
+					//e.printStackTrace();
+					//System.out.println("retry: " + URI);
+					extract(URI, toPath, "GB2312",ID);
+					//System.out.println("retry success");
+					return;
+				}
+			}
 			e.printStackTrace();
+			System.out.println("-->: " + URI);
 		}
 		
 	}
 	
 	static public void main(String[] args){
 		HtmlExtractor pExtractor = new HtmlExtractor();
-		pExtractor.extract(args[0], args[1]);
+		pExtractor.extract(args[0], args[1], "utf-8", 0);
 	}
 	
 	/*
@@ -105,7 +128,6 @@ public class HtmlExtractor implements Extractor{
 					nodeText = nodeText.replaceAll("(&nbsp);", "");
 					nodeText = nodeText.replaceAll("\" \\u002B entry\\u005B\"title\"] \\u002B \"", "");
 					if(!nodeText.startsWith("a href=") && nodeText.length() > 0){
-						System.out.println(nodeText);
 						text += " " + nodeText;
 					}
 				}

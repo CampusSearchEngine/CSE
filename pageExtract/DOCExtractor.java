@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class DOCExtractor implements Extractor {
 
 	@Override
-	public void extract(String URI, String toPath) {
+	public void extract(String URI, String toPath, String encoding, int ID) {
 		boolean isDocx = false;
 		if(URI.endsWith(".docx")){
 			isDocx = true;
@@ -49,6 +49,7 @@ public class DOCExtractor implements Extractor {
 			json.put("title", titleStr);
 			json.put("URI", URI);
 			json.put("content", conStr);
+			json.put("ID", ID);
 			
 			
 			BufferedWriter bWriter = IO.getWriter(toPath);
@@ -56,12 +57,13 @@ public class DOCExtractor implements Extractor {
 			bWriter.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("-->: " + URI);
 		}
 	}
 	
 	static public void main(String[] args){
 		DOCExtractor pExtractor = new DOCExtractor();
-		pExtractor.extract(args[0], args[1]);
+		pExtractor.extract(args[0], args[1], "utf-8", 0);
 	}
 
 }

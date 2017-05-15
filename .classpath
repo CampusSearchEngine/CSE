@@ -10,6 +10,7 @@
 	<classpathentry kind="src" path="DOC"/>
 	<classpathentry kind="src" path="DocumentWriter"/>
 	<classpathentry kind="src" path="IndexWriter"/>
+	<classpathentry kind="src" path="IndexSearcher"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-launcher-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/aopalliance-1.0.jar"/>
@@ -68,6 +69,9 @@
 	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="lib" path="DOC/poi-3.10-FINAL/ooxml-lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="PDF/pdfbox-debugger-2.0.5.jar"/>
+	<classpathentry kind="lib" path="PDF/preflight-2.0.5.jar"/>
+	<classpathentry kind="lib" path="PDF/xmpbox-2.0.5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="htmlparser/src0_82.jar"/>
 	<classpathentry kind="lib" path="htmlparser/lib/filterbuilder.jar"/>

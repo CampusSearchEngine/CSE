@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -11,11 +12,7 @@ import org.apache.lucene.util.Version;
 import org.json.JSONObject;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-import jdk.nashorn.internal.parser.JSONParser;
 
-/*
- * write lucene index using extracted document folder
- * */
 public class WDocIndexWriter {
 	String docPath;
 	String indexPath;
@@ -38,6 +35,9 @@ public class WDocIndexWriter {
 		}
 	}
 	
+	/*
+	 * write lucene index using extracted document folder
+	 * */
 	public void doWrite(){
 		DirIter dIter = new DirIter(docPath);
 		try {
@@ -60,8 +60,23 @@ public class WDocIndexWriter {
 			}
 			averageLength /= indexWriter.numDocs();
 			indexWriter.close();
+			
+			BufferedWriter bWriter = IO.getWriter(indexPath + "/global.txt");
+			bWriter.write("" + averageLength +"\n");
+			bWriter.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/*
+	 * usage : <docPath> <indexPath>
+	 * <docPath> : the path where .wdoc files are stored
+	 * <indexPath> : the path where the lucene index should be placed
+	 * */
+	static public void main(String[] args){
+		WDocIndexWriter wDocIndexWriter = new WDocIndexWriter(args[0], args[1]);
+		wDocIndexWriter.doWrite();
 	}
 }

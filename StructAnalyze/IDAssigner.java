@@ -53,4 +53,13 @@ public class IDAssigner {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * usage : <mirrorPath> <output>
+	 * */
+	public static void main(String[] args){
+		IDAssigner idAssigner = new IDAssigner();
+		idAssigner.assignIDForMirror(args[0]);
+		idAssigner.writeIDMap(args[1]);
+	}
 }

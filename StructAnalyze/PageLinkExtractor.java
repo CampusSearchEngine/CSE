@@ -151,6 +151,14 @@ public class PageLinkExtractor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	/*
+	 * usage : <pageList> <output>
+	 * */
+	public static void main(String[] args){
+		PageLinkExtractor pExtractor = new PageLinkExtractor();
+		pExtractor.readIDMap(args[0]);
+		pExtractor.saveLinkMap(args[1]);
 	}
 }

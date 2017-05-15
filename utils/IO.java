@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import org.apache.lucene.document.Field;
+
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 public class IO {
@@ -25,6 +27,8 @@ public class IO {
 	static BufferedWriter getWriter(String filename){
 		try {
 			File file = new File(filename);
+			if(file.getParentFile() != null && !file.getParentFile().exists())
+				file.getParentFile().mkdirs();
 			FileOutputStream fStream = new FileOutputStream(file);
 			OutputStreamWriter iWriter = new OutputStreamWriter(fStream,"utf-8");
 			BufferedWriter bWriter = new BufferedWriter(iWriter);

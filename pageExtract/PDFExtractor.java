@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class PDFExtractor implements Extractor {
 
 	@Override
-	public void extract(String URI, String toPath) {
+	public void extract(String URI, String toPath, String encoding, int ID) {
 		String txtDoc = URI.substring(0, URI.length()-3) + "txt";
 		try {
 			ExtractText.main(new String[]{URI, txtDoc});
@@ -38,6 +38,7 @@ public class PDFExtractor implements Extractor {
 			json.put("title", titleStr);
 			json.put("URI", URI);
 			json.put("content", conStr);
+			json.put("ID", ID);
 			
 			
 			BufferedWriter bWriter = IO.getWriter(toPath);
@@ -45,11 +46,12 @@ public class PDFExtractor implements Extractor {
 			bWriter.close();
 		} catch (IOException | JSONException e) {
 			e.printStackTrace();
+			System.out.println("-->: " + URI);
 		}
 	}
 	
 	static public void main(String[] args){
 		PDFExtractor pExtractor = new PDFExtractor();
-		pExtractor.extract(args[0], args[1]);
+		pExtractor.extract(args[0], args[1], "utf-8", int ID);
 	}
 }

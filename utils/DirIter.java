@@ -24,6 +24,10 @@ public class DirIter extends Iteratorable {
 		init();
 	}
 	
+	int getCount(){
+		return files.size();
+	}
+	
 	String next(){
 		return files.elementAt(pointer++);
 	}
