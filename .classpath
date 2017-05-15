@@ -8,6 +8,7 @@
 	<classpathentry kind="src" path="pageExtract"/>
 	<classpathentry kind="src" path="PDF"/>
 	<classpathentry kind="src" path="DOC"/>
+	<classpathentry kind="src" path="DocumentWriter"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/ant-launcher-1.7.1.jar"/>
 	<classpathentry kind="lib" path="spider/heritrix-3.1.1/lib/aopalliance-1.0.jar"/>

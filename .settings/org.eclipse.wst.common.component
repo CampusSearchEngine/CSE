@@ -9,6 +9,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/pageExtract"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/PDF"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/DOC"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/DocumentWriter"/>
         <property name="context-root" value="CSE"/>
         <property name="java-output-path" value="/CSE/bin"/>
     </wb-module>
