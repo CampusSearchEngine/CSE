@@ -40,9 +40,15 @@ public class WDocIndexWriter {
 	 * */
 	public void doWrite(){
 		DirIter dIter = new DirIter(docPath);
+		int count = 0;
+		String filename = new String();
 		try {
 			while(dIter.hasNext()){
-				String filename = dIter.next();
+				count++;
+				if((count % 10000) == 0)
+					System.out.println(count + "/" + dIter.getCount() + " wdocs are indexed");
+				
+				filename = dIter.next();
 				if(FileValidator.valiWDOC(filename)){
 					BufferedReader bReader = IO.getReader(filename);
 					String line;
@@ -67,6 +73,7 @@ public class WDocIndexWriter {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("caused by " + filename);
 		}
 	}
 	

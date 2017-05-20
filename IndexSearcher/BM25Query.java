@@ -95,7 +95,6 @@ public class BM25Query extends Query {
 			}
 
 			TermDocs termDocs = reader.termDocs(term);
-
 			if (termDocs == null)
 				return null;
 

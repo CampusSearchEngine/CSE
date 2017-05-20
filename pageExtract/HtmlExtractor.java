@@ -62,7 +62,8 @@ public class HtmlExtractor implements Extractor{
 			Node[] nodeArray = nodeList.toNodeArray();
 			
 			JSONObject json = new JSONObject();
-			
+			json.put("title","");
+					
 			String absString = new String();
 			String anchorString = new String();
 			

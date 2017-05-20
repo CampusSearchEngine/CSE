@@ -20,9 +20,11 @@ public class AllExtractor {
 	
 	public AllExtractor(String mirrorPath) {
 		this.mirrorPath = mirrorPath;
+		this.IDMap = new HashMap<String,Integer>();
 	}
 	
 	public void readIDMap(String mapFile) {
+		System.out.println("Reading IDMap...");
 		try {
 			BufferedReader bReader = IO.getReader(mapFile);
 			String line;
@@ -37,6 +39,7 @@ public class AllExtractor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("IDMap read, with " + IDMap.size() + " items");
 	}
 	
 	/*
@@ -54,21 +57,33 @@ public class AllExtractor {
 				System.out.println(count + "/" + dirIter.getCount() + " DOCs Extracted");
 			String filename = dirIter.next();
 			//System.out.println(filename + " " + FileValidator.validate(filename));
-			String URI = filename.replaceFirst(mirrorPath, "extracted");
-			int id = IDMap.get(URI);
+			String URI = filename.replaceFirst(mirrorPath+"\\\\", "");
+			String output = "extracted\\" + URI ;
+			// Get id of this page, if null(this page is unwanted type) continue
+			Integer idObj = IDMap.get(URI);
+			int id = 0;
+			if(idObj != null)
+				id = idObj.intValue();
+			else
+			{
+				//System.out.println(URI);
+				continue;
+			}
+				
+				
 			//System.out.println(toPath);
 			switch (FileValidator.validate(filename)) {
 			case FileValidator.HTML:
-				URI = URI.replaceAll(FileValidator.HTML_SUFFIX, WDOC_SUFFIX);
-				htmlExtractor.extract(filename, URI, "utf-8", id);
+				output = output.replaceAll(FileValidator.HTML_SUFFIX, WDOC_SUFFIX);
+				htmlExtractor.extract(filename, output, "utf-8", id);
 				break;
 			case FileValidator.DOC:
-				URI = URI.replaceAll(FileValidator.DOC_SUFFIX, WDOC_SUFFIX);
-				docExtractor.extract(filename, URI, "utf-8", id);
+				output = output.replaceAll(FileValidator.DOC_SUFFIX, WDOC_SUFFIX);
+				docExtractor.extract(filename, output, "utf-8", id);
 				break;
 			case FileValidator.PDF:
-				URI = URI.replaceAll(FileValidator.PDF_SUFFIX, WDOC_SUFFIX);
-				pdfExtractor.extract(filename, URI, "utf-8", id);
+				output = output.replaceAll(FileValidator.PDF_SUFFIX, WDOC_SUFFIX);
+				pdfExtractor.extract(filename, output, "utf-8", id);
 				break;
 			default:
 				break;

@@ -21,9 +21,9 @@ public class PDFDocWriter implements DocumentWriter {
 		Document document = new Document();
 		
 		try {
-			Field titleField = new Field("title", json.getString("title"), Store.YES, Index.NOT_ANALYZED);
+			Field titleField = new Field("title", json.getString("title"), Store.YES, Index.ANALYZED);
 			Field contentField = new Field("content", json.getString("content"),Store.YES,Index.ANALYZED);
-			Field URIField = new Field("URI", json.getString("URI"), Store.YES, Index.NOT_ANALYZED);
+			Field URIField = new Field("URI", json.getString("URI"), Store.YES, Index.ANALYZED);
 			Field typeField = new Field("type", "pdf", Store.YES, Index.NOT_ANALYZED);
 			Field IDField = new Field("ID", json.getString("ID"), Store.YES, Index.NOT_ANALYZED);
 			

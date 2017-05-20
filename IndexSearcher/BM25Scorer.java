@@ -144,7 +144,7 @@ final class BM25Scorer extends Scorer {
 			float tf = this.termDocs.freq();
 			int docNum = this.termDocs.doc();
 			Document document = reader.document(docNum);
-			int length = Integer.parseInt(document.getField("ABSLength").stringValue());
+			int length = document.getField("content").toString().length();
 			float K = K1 * (1 - b + b * length/this.avgLength);
 			float R = tf * (K1 + 1) / (tf + K);
 			return idf * R;

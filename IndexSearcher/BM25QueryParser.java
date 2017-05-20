@@ -30,8 +30,10 @@ public class BM25QueryParser extends QueryParser {
 		TokenStream tokenStream = analyzer.tokenStream(field, stringReader);		//tokenize query
 		try {
 			tokenStream.reset();
+			tokenStream.incrementToken();
 			CharTermAttribute charTermAttribute = tokenStream.addAttribute(CharTermAttribute.class);
 			do{
+				//System.out.println("token : " + charTermAttribute.toString());
 				Term term = new Term(field, charTermAttribute.toString());			//construct queries using tokens
 				BM25Query bm25Query = new BM25Query(term, this.avgLength);
 				rtQuery.add(bm25Query, Occur.SHOULD);

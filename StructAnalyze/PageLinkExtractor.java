@@ -80,7 +80,6 @@ public class PageLinkExtractor {
 					subURI = subURI.replaceAll("http://", "");
 					subURI = subURI.replaceAll("/", "\\\\");
 					
-					System.out.println(subURI);
 					Integer subID = IDMap.get(subURI);
 					if(subID != null){
 						childernID.addElement(subID);

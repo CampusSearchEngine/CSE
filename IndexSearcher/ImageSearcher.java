@@ -15,6 +15,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.Weight;
+import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
@@ -23,25 +24,34 @@ public class ImageSearcher {
 	private IndexReader reader;
 	private IndexSearcher searcher;
 	private Analyzer analyzer;
-	private float avgLength=1.0f;
-	
-	public ImageSearcher(String indexdir){
+	private float avgLength = 1.0f;
+
+	public ImageSearcher(String indexdir) {
 		analyzer = new IKAnalyzer();
-		try{
+		try {
 			reader = IndexReader.open(FSDirectory.open(new File(indexdir)));
 			searcher = new IndexSearcher(reader);
 			searcher.setSimilarity(new BM25Similarity());
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public TopDocs searchQuery(String queryString,String field,int maxnum){
+	public TopDocs searchQuery(String queryString, String[] fields, int maxnum, float[] weights) {
 		try {
-			BM25QueryParser parser = new BM25QueryParser(Version.LUCENE_35, field, analyzer, avgLength);
-			Query query=parser.parse(queryString);
-			query.setBoost(1.0f);
-			TopDocs results = searcher.search(query, maxnum);
+			BooleanQuery combinedQuery = new BooleanQuery();
+			// for every field and weight create a BM25 query and combine them using
+			// BooleanQuery
+			for (int i = 0; i < fields.length; i++) {
+				String field = fields[i];
+				QueryParser parser = new BM25QueryParser(Version.LUCENE_35, field, analyzer, avgLength);
+				Query query = parser.parse(queryString);
+				query.setBoost(weights[i]);
+
+				combinedQuery.add(query, Occur.SHOULD);
+			}
+			System.out.println("final query : " + combinedQuery.toString());
+			TopDocs results = searcher.search(combinedQuery, maxnum);
 			System.out.println(results);
 			return results;
 		} catch (Exception e) {
@@ -49,45 +59,48 @@ public class ImageSearcher {
 		}
 		return null;
 	}
-	
-	public Document getDoc(int docID){
-		try{
+
+	public Document getDoc(int docID) {
+		try {
 			return searcher.doc(docID);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	public void loadGlobals(String filename){
-		try{
+
+	public void loadGlobals(String filename) {
+		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
-			String line=reader.readLine();
-			avgLength=Float.parseFloat(line);
+			String line = reader.readLine();
+			avgLength = Float.parseFloat(line);
 			reader.close();
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public float getAvg(){
+
+	public float getAvg() {
 		return avgLength;
 	}
-	
+
 	/*
 	 * usage: <indexPath> <query>
-	 * */
-	public static void main(String[] args){
-		ImageSearcher search=new ImageSearcher(args[0]);
-		search.loadGlobals(args[1] + "/global.txt");
-		System.out.println("avg length = "+search.getAvg());
+	 */
+	public static void main(String[] args) {
+		ImageSearcher search = new ImageSearcher(args[0]);
+		search.loadGlobals(args[0] + "/global.txt");
+		System.out.println("avg length = " + search.getAvg());
+
+		TopDocs results = search.searchQuery(args[1], new String[] { "content", "title", "anchor", "URI" }, 10,
+				new float[] { 1.0f, 2.0f, 0.5f, 0.1f });
 		
-		TopDocs results=search.searchQuery("Ð£Çì", "content", 100);
 		ScoreDoc[] hits = results.scoreDocs;
 		for (int i = 0; i < hits.length; i++) { // output raw format
 			Document doc = search.getDoc(hits[i].doc);
-			System.out.println("doc=" + hits[i].doc + " score="
-					+ hits[i].score+" picPath= "+doc.get("picPath"));
+			System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score + " title= " + doc.get("title"));
+			// System.out.println(doc.get("content"));
+			System.out.println(doc.get("URI"));
 		}
 	}
 }
