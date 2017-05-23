@@ -18,6 +18,7 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <style>
         body {
             padding-top: 50px;
@@ -26,12 +27,13 @@
         .search_input {
             height: 44px;
             width: 500px;
-            font-size: 15px;
             padding: 5px 10px 5px 10px;
             margin: 0px;
-            border-right: none;
-            border: thin;
+            border-style: solid none solid solid;
             border-color: gray;
+            border-left-width: 1px;
+            border-top-width: 1px;
+            border-bottom-width: 1px;
             outline: none;
             background-color: white;
             font-size: 16px;
@@ -57,6 +59,17 @@
 
         .subtitle {
             color: white;
+        }
+
+        .footer {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            height: 22px;
+            color: #666;
+            background-color: #333;
+            width: 100%;
+            text-align: right;
         }
     </style>
 </head>
@@ -92,6 +105,7 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-5 col-md-offset-2 page-header">
@@ -114,16 +128,22 @@
                         </td>
                     </tr>
                 </table>
-
             </form>
         </div>
     </div>
 </div>
+<footer class="footer">
+    <div align="center">
+            搜索引擎技术基础&nbsp;&nbsp;|&nbsp;&nbsp;计45&nbsp;&nbsp;
+            江天&nbsp;&nbsp;2014011410&nbsp;&nbsp;
+            张琛昱&nbsp;&nbsp;2014011401
+    </div>
+</footer>
 
+</body>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="vendor/jquery/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-</body>
 </html>
