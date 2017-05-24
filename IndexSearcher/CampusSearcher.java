@@ -20,13 +20,13 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-public class ImageSearcher {
+public class CampusSearcher {
 	private IndexReader reader;
 	private IndexSearcher searcher;
 	private Analyzer analyzer;
 	private float avgLength = 1.0f;
 
-	public ImageSearcher(String indexdir) {
+	public CampusSearcher(String indexdir) {
 		analyzer = new IKAnalyzer();
 		try {
 			reader = IndexReader.open(FSDirectory.open(new File(indexdir)));
@@ -88,7 +88,7 @@ public class ImageSearcher {
 	 * usage: <indexPath> <query>
 	 */
 	public static void main(String[] args) {
-		ImageSearcher search = new ImageSearcher(args[0]);
+		CampusSearcher search = new CampusSearcher(args[0]);
 		search.loadGlobals(args[0] + "/global.txt");
 		System.out.println("avg length = " + search.getAvg());
 
@@ -96,6 +96,7 @@ public class ImageSearcher {
 				new float[] { 1.0f, 2.0f, 0.5f, 0.1f });
 		
 		ScoreDoc[] hits = results.scoreDocs;
+		hits = DocPRSorter.sort(hits, search.searcher);
 		for (int i = 0; i < hits.length; i++) { // output raw format
 			Document doc = search.getDoc(hits[i].doc);
 			System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score + " title= " + doc.get("title"));

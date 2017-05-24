@@ -12,6 +12,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/DocumentWriter"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/IndexWriter"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/IndexSearcher"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Mongo"/>
         <property name="context-root" value="CSE"/>
         <property name="java-output-path" value="/CSE/bin"/>
     </wb-module>
