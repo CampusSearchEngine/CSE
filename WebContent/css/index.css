@@ -1,0 +1,144 @@
+body {
+    padding-top: 50px;
+}
+
+.search_input {
+    height: 44px;
+    width: 500px;
+    padding: 5px 10px 5px 10px;
+    margin: 0px;
+    border-style: solid none solid solid;
+    border-color: gray;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+}
+
+.search_btn {
+    height: 44px;
+    width: 50px;
+    border: none;
+    background-color: mediumpurple;
+}
+
+.logo {
+    /*font-size: 70px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 16px #1f5449;*/
+    text-align:left;
+    font-size:7em;
+    margin:20px 0 20px 0;
+}
+
+h1 {
+    text-decoration: none;
+}
+
+.subtitle {
+    color: white;
+}
+
+.footer {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 22px;
+    color: #666;
+    background-color: #333;
+    width: 100%;
+    text-align: right;
+}
+
+@font-face {
+    font-family: 'Iceland';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Iceland'), local('Iceland-Regular'),
+    url('http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff') format('woff');
+}
+
+.logo a{
+
+    text-decoration:none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    font-family: Iceland;
+    color:#ffffff;
+    -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon6 1.5s ease-in-out infinite alternate;
+    animation: neon6 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon6 {
+    from {
+        text-shadow: 0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px #ff00de,
+        0 0 70px #ff00de,
+        0 0 80px #ff00de,
+        0 0 100px #ff00de,
+        0 0 150px #ff00de;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #ff00de,
+        0 0 35px #ff00de,
+        0 0 40px #ff00de,
+        0 0 50px #ff00de,
+        0 0 75px #ff00de;
+    }
+}
+
+@-moz-keyframes neon6 {
+    from {
+        text-shadow: 0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px #ff00de,
+        0 0 70px #ff00de,
+        0 0 80px #ff00de,
+        0 0 100px #ff00de,
+        0 0 150px #ff00de;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #ff00de,
+        0 0 35px #ff00de,
+        0 0 40px #ff00de,
+        0 0 50px #ff00de,
+        0 0 75px #ff00de;
+    }
+}
+
+@-webkit-keyframes neon6 {
+    from {
+        text-shadow: 0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px #ff00de,
+        0 0 70px #ff00de,
+        0 0 80px #ff00de,
+        0 0 100px #ff00de,
+        0 0 150px #ff00de;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #ff00de,
+        0 0 35px #ff00de,
+        0 0 40px #ff00de,
+        0 0 50px #ff00de,
+        0 0 75px #ff00de;
+    }
+}

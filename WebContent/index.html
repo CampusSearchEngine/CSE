@@ -10,7 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/engine.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,62 +18,8 @@
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <style>
-        body {
-            padding-top: 50px;
-        }
-
-        .search_input {
-            height: 44px;
-            width: 500px;
-            padding: 5px 10px 5px 10px;
-            margin: 0px;
-            border-style: solid none solid solid;
-            border-color: gray;
-            border-left-width: 1px;
-            border-top-width: 1px;
-            border-bottom-width: 1px;
-            outline: none;
-            background-color: white;
-            font-size: 16px;
-        }
-
-        .search_btn {
-            height: 44px;
-            width: 50px;
-            border: none;
-            background-color: mediumpurple;
-        }
-
-        .logo {
-            font-size: 70px;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-shadow: 0 0 16px #1f5449;
-        }
-
-        h1 {
-            text-decoration: none;
-        }
-
-        .subtitle {
-            color: white;
-        }
-
-        .footer {
-            display: block;
-            position: absolute;
-            bottom: 0;
-            height: 22px;
-            color: #666;
-            background-color: #333;
-            width: 100%;
-            text-align: right;
-        }
-    </style>
 </head>
-<body style="background: url('pic/tsinghua6.jpg') no-repeat fixed bottom center;background-size: cover;">
+<body style="background: url('pic/tsinghua5.jpg') no-repeat fixed bottom center;background-size: cover;">
 <nav class="navbar navbar-default navbar-fixed-top " style="opacity: 0.5">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -109,20 +55,22 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-5 col-md-offset-2 page-header">
-            <h1 class="logo">SearcTsing</h1><h4 class="subtitle">清华大学校内搜索引擎</h4>
+            <p class="logo"><a>SearcTsing</a></p><h4 class="subtitle">清华大学校内搜索引擎</h4>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-offset-2">
-            <form action="/search">
+            <form action="/search" method="get" id="search">
                 <table>
                     <tr>
                         <td>
-                            <input type="text" class="search_input">
+                            <input type="text" class="search_input" name="key">
+                            <input type="text" name="page_num" value="1" hidden>
+                            <input type="text" name="time_filter" value="0" hidden>
                         </td>
                         <td>
-                            <button type="button" class="search_btn">
+                            <button type="submit" class="search_btn">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </td>
@@ -146,4 +94,10 @@
 <script src="vendor/jquery/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
 </html>
