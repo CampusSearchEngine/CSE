@@ -15,6 +15,7 @@ public class UserClickLog implements Log {
 		log.put("userName",userName);
 		log.put("query", query);
 		log.put("URI", clickURI);
+		log.put("timeStamp", System.currentTimeMillis());
 	}
 
 }
