@@ -76,8 +76,12 @@ public class IDAssigner {
 				System.out.println(count + "/" + IDMap.size() + " Entires Written to DB");
 			Entry<String, Integer> entry = iterator.next();
 			int type = FileValidator.validate(entry.getKey());
-			if(type != FileValidator.INVALID && type != FileValidator.WDOC)
-				list.add(new Document().append("ID", entry.getValue()).append("URI", entry.getKey()));
+			if(type != FileValidator.INVALID && type != FileValidator.WDOC){
+				Document document = new Document();
+				document.append("ID", entry.getValue()).append("URI", entry.getKey());
+				document.append("click", 0).append("pageRank", 0.0f);
+				list.add(new Document());
+			}
 		}
 		
 		MongoDBs.pages.insertMany(list);

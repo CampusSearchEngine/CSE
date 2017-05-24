@@ -14,6 +14,7 @@ import org.jets3t.service.multithread.LookupACLEvent;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
 
 import sun.print.resources.serviceui;
 
@@ -72,9 +73,7 @@ public class DocPRSorter {
 	}
 	
 	static int MongoGetPR(int pageID){
-		Document query = new Document();
-		query.put("ID", pageID);
-		FindIterable<Document> iter = MongoDBs.pages.find(query);
+		FindIterable<Document> iter = MongoDBs.pages.find(Filters.eq("ID", pageID));
 		MongoCursor<Document> cursor = iter.iterator();
 		Document document = cursor.next();
 		return (Integer)document.get("ID");
