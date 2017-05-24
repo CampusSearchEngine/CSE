@@ -11,6 +11,7 @@ public class MongoDBs {
 	static MongoDatabase mainDB;
 	static MongoCollection<Document> pages;
 	static MongoCollection<Document> users;
+	static MongoCollection<Document> logs;
 	
 	static final String HOST = "localhost";
 	static final int PORT = 27017;
@@ -24,6 +25,7 @@ public class MongoDBs {
 			mainDB = client.getDatabase("mainDB");
 			pages = mainDB.getCollection("pages");
 			users = mainDB.getCollection("users");
+			logs = mainDB.getCollection("logs");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

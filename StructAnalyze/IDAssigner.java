@@ -5,10 +5,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import org.bson.Document;
+
 
 
 public class IDAssigner {
@@ -60,6 +65,24 @@ public class IDAssigner {
 		}
 	}
 	
+	public void writeIDMap2DB() {
+		MongoDBs.initDB();
+		List<Document> list = new ArrayList<Document>();
+		
+		Iterator<Entry<String, Integer>> iterator = IDMap.entrySet().iterator();
+		int count = 0;
+		while (iterator.hasNext()) {
+			if(count++ % 10000 == 0)
+				System.out.println(count + "/" + IDMap.size() + " Entires Written to DB");
+			Entry<String, Integer> entry = iterator.next();
+			int type = FileValidator.validate(entry.getKey());
+			if(type != FileValidator.INVALID && type != FileValidator.WDOC)
+				list.add(new Document().append("ID", entry.getValue()).append("URI", entry.getKey()));
+		}
+		
+		MongoDBs.pages.insertMany(list);
+	}
+	
 	/*
 	 * usage : <mirrorPath> <output>
 	 * */
@@ -67,5 +90,6 @@ public class IDAssigner {
 		IDAssigner idAssigner = new IDAssigner();
 		idAssigner.assignIDForMirror(args[0]);
 		idAssigner.writeIDMap(args[1]);
+		idAssigner.writeIDMap2DB();
 	}
 }

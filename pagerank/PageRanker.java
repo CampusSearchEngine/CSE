@@ -10,8 +10,12 @@ import java.util.Map;
 
 import javax.naming.InitialContext;
 
+import org.bson.Document;
 import org.omg.PortableInterceptor.AdapterManagerIdHelper;
 import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
+
+import com.mongodb.client.model.Filters;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 /*
  * use sequence:
  * 	PageRanker() --> buildPageMap() --> initPageRank() --> updateAll() --> writePageRank()
@@ -122,6 +126,17 @@ public class PageRanker {
 		}
 	}
 	
+	void wrtiePageRank2DB(){
+		MongoDBs.initDB();
+		Iterator iterator = pageMap.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry entry = (Map.Entry) iterator.next();
+			Page page = (Page) entry.getValue();
+			
+			MongoDBs.pages.findOneAndUpdate(Filters.eq("ID", page.id), new Document("$set",new Document("pageRank",page.pageRank)));
+		}
+	}
+	
 	void showPage(int id){
 		Page page = pageMap.get(id);
 		System.out.println("the page is " + page.title + " is pointed by");
@@ -139,8 +154,9 @@ public class PageRanker {
 		
 		PageRanker pageRanker = new PageRanker(Double.parseDouble(args[3]), Integer.parseInt(args[2]));
 		pageRanker.buildPageMap(args[0], args[1]);
-		//pageRanker.initPageRank();
-		//pageRanker.updateAll();
+		pageRanker.initPageRank();
+		pageRanker.updateAll();
+		pageRanker.wrtiePageRank2DB();
 		//pageRanker.writePageRank(args[4]);
 		System.out.println("pageRanker task over");
 		//pageRanker.showPage(25883781);

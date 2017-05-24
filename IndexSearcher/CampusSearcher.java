@@ -27,6 +27,7 @@ public class CampusSearcher {
 	private float avgLength = 1.0f;
 
 	public CampusSearcher(String indexdir) {
+		MongoDBs.initDB();
 		analyzer = new IKAnalyzer();
 		try {
 			reader = IndexReader.open(FSDirectory.open(new File(indexdir)));
