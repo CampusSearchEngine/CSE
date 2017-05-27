@@ -36,8 +36,8 @@ public class SearchServlet extends HttpServlet {
     		initSearcher(req.getSession().getServletContext().getRealPath("/"));
     	
         HttpSession session = req.getSession();
-
-        String keyStr = req.getParameter("key");
+         
+        String keyStr = req.getParameter("key"); 
         String pageNumStr = req.getParameter("page_num");
         String timeFilterStr = req.getParameter("time_filter");
         //get request info from http packet
@@ -52,7 +52,9 @@ public class SearchServlet extends HttpServlet {
             res.sendRedirect("/");
             return;
         } else {
-            key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
+        	key = keyStr;
+        	//not needed and invalid
+            //key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
         }
 
         if(!pageNumStr.equals("")) {
