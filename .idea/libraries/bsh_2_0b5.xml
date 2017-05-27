@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bsh-2.0b5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jar/heritrix/bsh-2.0b5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

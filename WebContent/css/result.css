@@ -1,0 +1,70 @@
+.search_input {
+    height: 36px;
+    width: 550px;
+    padding: 5px 10px 5px 10px;
+    margin: 0px;
+    border-style: solid none solid solid;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+}
+
+.search_btn {
+    height: 36px;
+    width: 50px;
+    border-style: solid solid solid none;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: black;
+    background-color: mediumpurple;
+}
+
+.header {
+    background: url('../pic/topbg.jpg') repeat-x;
+    width: 100%;
+    height: 90px;
+}
+
+.entry {
+
+}
+
+.abstract {
+
+}
+
+.link {
+    font-size: 17px;
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+
+.addr {
+
+}
+
+.date {
+
+}
+
+.cite {
+    color: #4cae4c;
+    padding-top: 4px;
+}
+
+.pic {
+    float: left;
+    padding-right: 10px;
+}
+
+.options {
+    border-style: none solid none none;
+    border-right-width: 1px;
+    border-right-color: #444444;
+    height: 400px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>SearcTsing</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background: url('pic/tsinghua5.jpg') no-repeat fixed bottom center;background-size: cover;">
+<nav class="navbar navbar-default navbar-fixed-top " style="opacity: 0.5">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">商标</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">后续功能<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">功能1</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">功能2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2 page-header">
+            <p class="logo"><a>SearcTsing</a></p><h4 class="subtitle">清华大学校内搜索引擎</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-2">
+            <form action="/search" method="get" id="search">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" class="search_input" name="key">
+                            <input type="text" name="page_num" value="1" hidden>
+                            <input type="text" name="time_filter" value="0" hidden>
+                        </td>
+                        <td>
+                            <button type="submit" class="search_btn">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div align="center">
+            搜索引擎技术基础&nbsp;&nbsp;|&nbsp;&nbsp;计45&nbsp;&nbsp;
+            江天&nbsp;&nbsp;2014011410&nbsp;&nbsp;
+            张琛昱&nbsp;&nbsp;2014011401
+    </div>
+</footer>
+
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="vendor/jquery/jquery-1.11.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(document).ready(function() {
+
+    });
+</script>
+</html>
