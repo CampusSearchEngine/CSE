@@ -36,6 +36,8 @@ public class CampusSearcher {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		loadGlobals(indexdir + "/global.txt");
+		System.out.println("avg length = " + avgLength);
 	}
 	
 	public TopDocs searchQuery(String queryString, String[] fields, int maxnum, float[] weights) {
@@ -85,24 +87,27 @@ public class CampusSearcher {
 		return avgLength;
 	}
 
+	ScoreDoc[] doQuery(String query){
+		TopDocs results = this.searchQuery(query, new String[] { "content", "title", "anchor", "URI" }, 10,
+				new float[] { 1.0f, 2.0f, 0.5f, 0.1f });
+		
+		ScoreDoc[] hits = results.scoreDocs;
+		hits = DocPRSorter.sort(hits, searcher);
+		for (int i = 0; i < hits.length; i++) { // output raw format
+			Document doc = this.getDoc(hits[i].doc);
+			System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score + " title= " + doc.get("title"));
+			// System.out.println(doc.get("content"));
+			System.out.println(doc.get("URI"));
+		}
+		return hits;
+	}
+	
 	/*
 	 * usage: <indexPath> <query>
 	 */
 	public static void main(String[] args) {
 		CampusSearcher search = new CampusSearcher(args[0]);
-		search.loadGlobals(args[0] + "/global.txt");
-		System.out.println("avg length = " + search.getAvg());
-
-		TopDocs results = search.searchQuery(args[1], new String[] { "content", "title", "anchor", "URI" }, 10,
-				new float[] { 1.0f, 2.0f, 0.5f, 0.1f });
 		
-		ScoreDoc[] hits = results.scoreDocs;
-		hits = DocPRSorter.sort(hits, search.searcher);
-		for (int i = 0; i < hits.length; i++) { // output raw format
-			Document doc = search.getDoc(hits[i].doc);
-			System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score + " title= " + doc.get("title"));
-			// System.out.println(doc.get("content"));
-			System.out.println(doc.get("URI"));
-		}
+		search.doQuery(args[1]);
 	}
 }

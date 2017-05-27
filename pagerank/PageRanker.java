@@ -106,7 +106,7 @@ public class PageRanker {
 		System.out.println("writing PageRanks..");
 		try {
 			File file = new File(filename);
-			if(!file.getParentFile().exists())
+			if(file.getParentFile() != null && !file.getParentFile().exists())
 				file.getParentFile().mkdirs();
 			FileOutputStream fOutputStream = new FileOutputStream(file);
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fOutputStream, "utf-8");
@@ -132,7 +132,8 @@ public class PageRanker {
 		while (iterator.hasNext()) {
 			Map.Entry entry = (Map.Entry) iterator.next();
 			Page page = (Page) entry.getValue();
-			
+			if(page.id == 2811)
+				System.out.println(page.title + " " + page.pageRank);
 			MongoDBs.pages.findOneAndUpdate(Filters.eq("ID", page.id), new Document("$set",new Document("pageRank",page.pageRank)));
 		}
 	}
@@ -157,7 +158,7 @@ public class PageRanker {
 		pageRanker.initPageRank();
 		pageRanker.updateAll();
 		pageRanker.wrtiePageRank2DB();
-		//pageRanker.writePageRank(args[4]);
+		pageRanker.writePageRank(args[4]);
 		System.out.println("pageRanker task over");
 		//pageRanker.showPage(25883781);
 	}
