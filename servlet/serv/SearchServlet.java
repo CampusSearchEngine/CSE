@@ -5,14 +5,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.lucene.document.Document;
+import org.bouncycastle.asn1.icao.CscaMasterList;
+import org.bson.json.JsonMode;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import bsh.This;
+import indexSearcher.CampusSearcher;
+
 import java.io.IOException;
+import java.util.Vector;
 
 /**
  * Created by THU73 on 17/5/21.
  */
 public class SearchServlet extends HttpServlet {
+	static CampusSearcher searcher;
+	
+	static final String INDEX_PATH = "/index";
+	
+	static void initSearcher(String workingPath) {
+		searcher = new CampusSearcher(workingPath + INDEX_PATH);
+	}
+	
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+    	if(searcher == null)
+    		initSearcher(req.getSession().getServletContext().getRealPath("/"));
+    	
         HttpSession session = req.getSession();
 
         String keyStr = req.getParameter("key");
@@ -62,13 +84,36 @@ public class SearchServlet extends HttpServlet {
         System.out.println("key: " + key + " pageNum: " + pageNum + " timeFilter: " + timeFilter);
 
         //do searching...
+        Vector<Document> documents = searcher.doQuery(key, pageNum);
+        int actualRetNum = documents.size();
+        System.out.println("actually find " + actualRetNum + " pages");
+        
+        Vector<JSONObject> jsons = new Vector<JSONObject>();
+        for(Document document : documents){
+        	String content = document.get("content");
+        	String title = document.get("title");
+        	String URI = document.get("URI");
+        	String type = document.get("type"); // html pdf doc
+        	// do what you want with these fields, e.g., store them in Json
+        	System.out.println("title: " + title + " URI " + URI);
+        	JSONObject jsonObject = new JSONObject();
+        	try {
+				jsonObject.put("content", content);
+				jsonObject.put("title", title);
+				jsonObject.put("URI", URI);
+				jsonObject.put("type", type);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+        	jsons.add(jsonObject);
+        }
 
         RequestBean rb = new RequestBean();
         rb.setKey(key);
         rb.setPageNum(pageNum);
         rb.setTimeFilter(timeFilter);
         session.setAttribute("request", rb);
-        req.getRequestDispatcher(req.getContextPath() + "/result.jsp").forward(req, res);
+        req.getRequestDispatcher("/result.jsp").forward(req, res);
     }
 
     protected void doPost (HttpServletRequest req, HttpServletResponse res)
