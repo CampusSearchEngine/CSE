@@ -37,6 +37,7 @@ public class PDFExtractor implements Extractor {
 			}
 			bReader.close();
 			
+			URI = URI.replaceFirst(".*?\\\\", "");
 			JSONObject json = new JSONObject();
 			json.put("type", "pdf");
 			json.put("title", titleStr);

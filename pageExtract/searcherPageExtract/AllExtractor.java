@@ -58,7 +58,7 @@ public class AllExtractor {
 		int count = 0;
 		while(dirIter.hasNext()){
 			count ++;
-			if(count % 10000 == 0)
+			if(count % 1000 == 0)
 				System.out.println(count + "/" + dirIter.getCount() + " DOCs Extracted");
 			String filename = dirIter.next();
 			//System.out.println(filename + " " + FileValidator.validate(filename));

@@ -85,6 +85,7 @@ public class HtmlExtractor implements Extractor{
 				}
 			}
 			
+			URI = URI.replaceFirst(".*?\\\\", "");
 			json.put("type", "html");
 			json.put("URI", URI);
 			json.put("content", absString);

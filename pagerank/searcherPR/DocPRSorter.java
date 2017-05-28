@@ -67,7 +67,7 @@ public class DocPRSorter {
 
 			@Override
 			public int compare(ScoreDoc o1, ScoreDoc o2) {
-				return	o1.score > o2.score ? 1 : -1;
+				return	o1.score > o2.score ? -1 : 1;
 			}
 		});
 		

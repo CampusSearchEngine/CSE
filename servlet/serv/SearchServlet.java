@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import indexSearcher.CampusSearcher;
+import indexSearcher.SearcherResult;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -25,13 +26,13 @@ public class SearchServlet extends HttpServlet {
 
     static void initSearcher(String workingPath) {
 
-        //searcher = new CampusSearcher(workingPath + INDEX_PATH);
+        searcher = new CampusSearcher(workingPath + INDEX_PATH);
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        //if(searcher == null)
-        //	initSearcher(req.getSession().getServletContext().getRealPath("/"));
+        if(searcher == null)
+        	initSearcher(req.getSession().getServletContext().getRealPath("/"));
 
         HttpSession session = req.getSession();
 
@@ -111,8 +112,8 @@ public class SearchServlet extends HttpServlet {
 
             // do what you want with these fields, e.g., store them in Json
             /*
-            eb.setTitle(new String("这是一个超链接结果".getBytes("ISO-8859-1"),"utf-8"));
-            eb.setAbst(new String("精密测试技术及仪器国家重点实验室是1990年经国家计委批准、利用世行贷款、由清华大学与天津大学联合组建的国家级重点实验室。1995年实验室建成并通过主管部门验收，同...".getBytes("ISO-8859-1"),"utf-8"));
+            eb.setTitle(new String("杩欐槸涓�涓秴閾炬帴缁撴灉".getBytes("ISO-8859-1"),"utf-8"));
+            eb.setAbst(new String("绮惧瘑娴嬭瘯鎶�鏈強浠櫒鍥藉閲嶇偣瀹為獙瀹ゆ槸1990骞寸粡鍥藉璁″鎵瑰噯銆佸埄鐢ㄤ笘琛岃捶娆俱�佺敱娓呭崕澶у涓庡ぉ娲ュぇ瀛﹁仈鍚堢粍寤虹殑鍥藉绾ч噸鐐瑰疄楠屽銆�1995骞村疄楠屽寤烘垚骞堕�氳繃涓荤閮ㄩ棬楠屾敹锛屽悓...".getBytes("ISO-8859-1"),"utf-8"));
             eb.setLink("pmti.pim.tsinghua.edu.cn/");
             eb.setType("html");
             */

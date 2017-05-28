@@ -48,6 +48,7 @@ public class DOCExtractor implements Extractor {
 			for(int i = 1; i < lines.length; i++)
 				conStr += lines[i];
 			
+			URI = URI.replaceFirst(".*?\\\\", "");
 			JSONObject json = new JSONObject();
 			json.put("type", "doc");
 			json.put("title", titleStr);
