@@ -8,6 +8,7 @@ import java.util.Vector;
 public class ResultBean {
     private int page_num;
     private Vector<EntryBean> vec;
+    private int total_num;
 
     public int getPage_num() {
         return page_num;
@@ -23,5 +24,13 @@ public class ResultBean {
 
     public void setVec(Vector<EntryBean> vec) {
         this.vec = vec;
+    }
+
+    public int getTotal_num() {
+        return total_num;
+    }
+
+    public void setTotal_num(int total_num) {
+        this.total_num = total_num;
     }
 }

@@ -12,7 +12,6 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.ScoreDoc;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import org.jets3t.service.multithread.LookupACLEvent;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCursor;

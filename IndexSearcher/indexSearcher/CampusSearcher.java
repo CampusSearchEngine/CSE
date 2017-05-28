@@ -25,7 +25,6 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-import com.lowagie.text.List;
 
 import searcherDB.MongoDBs;
 import searcherPR.DocPRSorter;

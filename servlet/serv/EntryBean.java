@@ -8,8 +8,6 @@ import java.util.Date;
 public class EntryBean {
     private String link;
     private String title;
-    private String abst;
-    private Date date;
 
     public String getLink() {
         return link;
@@ -42,4 +40,18 @@ public class EntryBean {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String abst;
+    private Date date;
+    private String type;
+
+
 }
