@@ -12,8 +12,11 @@ import org.bson.json.JsonMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sleepycat.je.tree.SearchResult;
+
 import bsh.This;
 import indexSearcher.CampusSearcher;
+import indexSearcher.SearcherResult;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -86,7 +89,9 @@ public class SearchServlet extends HttpServlet {
         System.out.println("key: " + key + " pageNum: " + pageNum + " timeFilter: " + timeFilter);
 
         //do searching...
-        Vector<Document> documents = searcher.doQuery(key, pageNum);
+        SearcherResult sRst = searcher.doQuery(key, pageNum);
+        Vector<Document> documents = sRst.docs;
+        int totNum = sRst.totNum;
         int actualRetNum = documents.size();
         System.out.println("actually find " + actualRetNum + " pages");
         

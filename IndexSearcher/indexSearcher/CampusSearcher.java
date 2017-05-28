@@ -115,7 +115,7 @@ public class CampusSearcher {
 		return hits;
 	}
 	
-	public Vector<Document> doQuery(String query, int pageNum) {
+	public SearcherResult doQuery(String query, int pageNum) {
 		Vector<Document> documents = new Vector<Document>();
 		
 		ScoreDoc[] sDocs = doQuery(query);
@@ -126,7 +126,7 @@ public class CampusSearcher {
 		while(startIndex < docSize && startIndex < endIndex)
 			documents.add(getDoc(sDocs[startIndex++].doc));
 		
-		return documents;
+		return new SearcherResult(documents, docSize);
 	}
 	
 	/*
