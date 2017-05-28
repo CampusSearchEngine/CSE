@@ -34,6 +34,7 @@
           <element id="library" level="module" name="xmpbox-2.0.5.jar" module-name="CSE" />
           <element id="library" level="project" name="heritrix-modules-3.1.1" />
           <element id="library" level="project" name="servlet-api-2.5-6.1.14" />
+          <element id="library" level="project" name="mongo-java-driver-3.4.2" />
         </element>
         <element id="directory" name="classes">
           <element id="module-output" name="CSE" />
@@ -41,6 +42,9 @@
         <element id="dir-copy" path="$PROJECT_DIR$/WebContent/WEB-INF" />
       </element>
       <element id="dir-copy" path="$PROJECT_DIR$/WebContent" />
+      <element id="directory" name="index">
+        <element id="dir-copy" path="$PROJECT_DIR$/index" />
+      </element>
     </root>
   </artifact>
 </component>

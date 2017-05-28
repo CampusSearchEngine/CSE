@@ -109,6 +109,9 @@
       <sourceFolder url="file://$MODULE_DIR$/WebContent" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/servlet" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jar" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Mongo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/User" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Log" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -768,5 +771,6 @@
     <orderEntry type="library" name="heritrix-modules-3.1.1" level="project" />
     <orderEntry type="library" name="bsh-2.0b5" level="project" />
     <orderEntry type="library" name="servlet-api-2.5-6.1.14" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.4.2" level="project" />
   </component>
 </module>

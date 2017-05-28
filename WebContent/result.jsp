@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="serv.RequestBean" %>
+<%@ page import="serv.ResultBean" %>
+<%@ page import="java.util.Vector" %>
+<%@ page import="serv.EntryBean" %>
 <%
     RequestBean rb = (RequestBean) session.getAttribute("request");
 %>
@@ -58,101 +61,45 @@
 
     </div>
     <div class="content col-md-6">
-        <div id="1" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">精密测试技术及仪器国家重点实验室是1990年经国家计委批准、利用世行贷款、
-                由清华大学与天津大学联合组建的国家级重点实验室。1995年实验室建成并通过主管部门验收，同...
+        <%
+            ResultBean reb = (ResultBean) session.getAttribute("result");
+            Vector<EntryBean> vec = reb.getVec();
+            if (reb.getTotal_num() > 0 && vec.size() > 0) {
+                for (int i = 0; i < vec.size(); ++i) {%>
+
+        <div id="<%=i + 1%>" class="entry">
+            <div class="link">
+                <a href="<%=vec.elementAt(i).getLink()%>"><%=vec.elementAt(i).getTitle()%>
+                </a>
             </div>
-            <div class="cite"><span class="addr">pmti.pim.tsinghua.edu.cn/</span> - <span class="date">2012-2-21</span>
-            </div>
-            <br>
-        </div>
-        <div id="2" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="3" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="">
+            <div>
+                <%
+                    if (1 == 0) {
+                %>
                 <div class="pic">
                     <img style="height: 90px;" src="http://yqs.pim.tsinghua.edu.cn/measure1.files/image002.jpg">
                 </div>
-                <div class="abstract">精密测试技术及仪器国家重点实验室是1990年经国家计委批准、利用世行贷款、
-                    由清华大学与天津大学联合组建的国家级重点实验室。1995年实验室建成并通过主管部门验收，同...
+                <%
+                    }
+                %>
+                <div class="abstract"><%=vec.elementAt(i).getAbst()%>
                 </div>
+
             </div>
-            <div class="cite"><span class="addr">pmti.pim.tsinghua.edu.cn/</span> - <span class="date">2012-2-21</span>
+            <div class="cite"><span class="addr"><%=vec.elementAt(i).getLink()%></span> - <span
+                    class="type"><%=vec.elementAt(i).getType()%></span>
             </div>
             <br>
         </div>
-        <div id="4" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="5" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="6" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="7" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="8" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="9" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
-        <div id="10" class="entry">
-            <div class="link"><a href="#">这是一个超链接结果</a></div>
-            <div class="abstract">1994 年始，与铁科院合作开展 DP 传感器在桥梁测试中应用的研究。 • 迄今为止
-                ，已发展了适用于桥梁测试的磁电式速度（位移）传感器、现场桥梁动态测试技术、现场桥梁...
-            </div>
-            <div class="cite"><span class="addr">yqs.pim.tsinghua.edu.cn/m...</span> - <span
-                    class="date">2006-4-13</span></div>
-            <br>
-        </div>
+        <%
+            }
+        } else if (reb.getTotal_num() == 0) {
+        %>
+        <h3>抱歉，没能找到与"<em style="color: red;"><%=rb.getKey()%>
+        </em>"相关的网页</h3>
+        <%
+            }
+        %>
     </div>
     <div class="attachment col-md-2">
     </div>
@@ -170,27 +117,32 @@
             <a href="#">blablalba....</a>&nbsp;&nbsp;<a href="#">blablalba....</a>&nbsp;&nbsp;<a
                 href="#">blablalba....</a><br>
         </p>
-        <div class="buttons">
-            <button class="button button-circle">1</button>
+        <%
+            if (reb.getTotal_num() > 10) {
+        %>
+        <div class="buttons row">
+            <%
+                int bc = reb.getTotal_num() / 10;
+                if (reb.getTotal_num() % 10 > 0) bc += 1;
+                for (int i = 0; i < bc; ++i) {
+                    if (rb.getPageNum() == i + 1) {
+            %>
+            <span>&nbsp;&nbsp;<%=i + 1%>&nbsp;&nbsp;</span>
             &nbsp;
-            <button class="button button-circle">2</button>
+            <%
+            } else {
+            %>
+            <button class="button button-circle"><%=i + 1%>
+            </button>
             &nbsp;
-            <button class="button button-circle">3</button>
-            &nbsp;
-            <button class="button button-circle">4</button>
-            &nbsp;
-            <span>5</span>
-            &nbsp;
-            <button class="button button-circle">6</button>
-            &nbsp;
-            <button class="button button-circle">7</button>
-            &nbsp;
-            <button class="button button-circle">8</button>
-            &nbsp;
-            <button class="button button-circle">9</button>
-            &nbsp;
-            <button class="button button-circle">10</button>
+            <%
+                    }
+                }
+            %>
         </div>
+        <%
+            }
+        %>
     </div>
 </div>
 
