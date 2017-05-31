@@ -17,6 +17,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/User"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/servlet"/>
         <wb-resource deploy-path="/index" source-path="/index"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/HotQuery"/>
         <property name="context-root" value="CSE"/>
         <property name="java-output-path" value="/CSE/bin"/>
     </wb-module>

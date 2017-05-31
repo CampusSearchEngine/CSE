@@ -25,7 +25,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-
+import hotQuery.HotQuery;
 import searcherDB.MongoDBs;
 import searcherPR.DocPRSorter;
 
@@ -124,7 +124,7 @@ public class CampusSearcher {
 		int endIndex = startIndex + RESULT_PER_PAGE;
 		while(startIndex < docSize && startIndex < endIndex)
 			documents.add(getDoc(sDocs[startIndex++].doc));
-		
+		HotQuery.updateHotQuery(query);
 		return new SearcherResult(documents, docSize);
 	}
 	
