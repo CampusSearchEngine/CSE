@@ -44,7 +44,7 @@
                         <input type="text" name="time_filter" value="0" hidden>
                     </td>
                     <td>
-                        <button type="button" class="search_btn">
+                        <button type="submit" class="search_btn">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
                     </td>

@@ -74,10 +74,15 @@ public class DocPRSorter {
 		return originDocs;
 	}
 	
-	static int MongoGetPR(int pageID){
+	static float MongoGetPR(int pageID){
 		FindIterable<Document> iter = MongoDBs.pages.find(Filters.eq("ID", pageID));
 		MongoCursor<Document> cursor = iter.iterator();
-		Document document = cursor.next();
-		return (Integer)document.get("ID");
+		Document document = null;
+		if(cursor.hasNext()) {
+			document = cursor.next();
+		} else {
+			return 0;
+		}
+		return Float.valueOf(document.get("pageRank").toString());
 	}
 }

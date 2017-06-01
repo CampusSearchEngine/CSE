@@ -53,7 +53,7 @@ public class SearchServlet extends HttpServlet {
         } else {
             key = keyStr;
             //not needed and invalid
-            //key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
+            key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
         }
 
         if (!pageNumStr.equals("")) {
