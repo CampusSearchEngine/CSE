@@ -12,4 +12,12 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+    	<servlet-name>HotQueryServlet</servlet-name>
+    	<servlet-class>serv.HotQueryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>HotQueryServlet</servlet-name>
+    	<url-pattern>/hotQuery</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Mongo;
 import com.mongodb.client.FindIterable;
@@ -22,7 +23,9 @@ public class HotQuery {
 			Document document = new Document();
 			document.put("query", query);
 			document.put("count", 1);
-			document.append("timeStamps", System.currentTimeMillis());
+			BasicDBList timeList = new BasicDBList();
+			timeList.add(System.currentTimeMillis());
+			document.put("timeStamps", timeList);
 			MongoDBs.queries.insertOne(document);
 		}
 		else{
