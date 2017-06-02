@@ -8,6 +8,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -35,6 +36,7 @@ public class WDocIndexWriter {
 		analyzer = new IKAnalyzer();
 		try {
 			IndexWriterConfig iConfig = new IndexWriterConfig(Version.LUCENE_35, analyzer);
+			iConfig.setOpenMode(OpenMode.CREATE);
 			Directory dir = FSDirectory.open(new File(indexPath));
     		indexWriter = new IndexWriter(dir, iConfig);
 		} catch (Exception e) {

@@ -53,7 +53,7 @@ public class SearchServlet extends HttpServlet {
         } else {
             key = keyStr;
             //not needed and invalid
-            key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
+            //key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
         }
 
         if (!pageNumStr.equals("")) {
@@ -99,7 +99,7 @@ public class SearchServlet extends HttpServlet {
 
         ResultBean reb = new ResultBean();
         reb.setPage_num(pageNum);
-        reb.setTotal_num(67);
+        reb.setTotal_num(totNum);
         
         Vector<EntryBean> vec = new Vector<EntryBean>();
         for (Document document : documents) {

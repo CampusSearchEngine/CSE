@@ -9,6 +9,9 @@ import javax.print.Doc;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.Field.Index;
+import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.ParseException;
@@ -26,6 +29,7 @@ import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import hotQuery.HotQuery;
+import luceneExtends.CSSHighlighter;
 import searcherDB.MongoDBs;
 import searcherPR.DocPRSorter;
 
@@ -33,10 +37,12 @@ public class CampusSearcher {
 	private IndexReader reader;
 	private IndexSearcher searcher;
 	private Analyzer analyzer;
+	private CSSHighlighter highlighter;
 	private float avgLength = 1.0f;
 	
 	static final int MAX_RESULT_NUM = 100;
 	static final int RESULT_PER_PAGE = 10;
+	static final int MAX_CONTENT_LEN = 200;
 
 	public CampusSearcher(String indexdir) {
 		MongoDBs.initDB();
@@ -49,6 +55,7 @@ public class CampusSearcher {
 			e.printStackTrace();
 		}
 		loadGlobals(indexdir + "/global.txt");
+		this.highlighter = new CSSHighlighter(this.analyzer, this.avgLength);
 		System.out.println("avg length = " + avgLength);
 	}
 	
@@ -60,6 +67,7 @@ public class CampusSearcher {
 			for (int i = 0; i < fields.length; i++) {
 				String field = fields[i];
 				QueryParser parser = new BM25QueryParser(Version.LUCENE_35, field, analyzer, avgLength);
+				//QueryParser parser = new QueryParser(Version.LUCENE_35, field, analyzer);
 				Query query = parser.parse(queryString);
 				query.setBoost(weights[i]);
 
@@ -122,8 +130,19 @@ public class CampusSearcher {
 		
 		int startIndex = pageNum * RESULT_PER_PAGE;
 		int endIndex = startIndex + RESULT_PER_PAGE;
-		while(startIndex < docSize && startIndex < endIndex)
-			documents.add(getDoc(sDocs[startIndex++].doc));
+		while(startIndex < docSize && startIndex < endIndex) {
+			Document doc = getDoc(sDocs[startIndex++].doc);
+			// do some highlight
+			String content = doc.get("content");
+			content = highlighter.Highlight(content, query, 100);
+			if(content == null){
+				content = doc.get("content").substring(0, MAX_CONTENT_LEN);
+			}
+			doc.removeField("content");
+			doc.add(new Field("content", content, Store.YES, Index.ANALYZED));	
+			documents.add(doc);
+		}
+			
 		HotQuery.updateHotQuery(query);
 		return new SearcherResult(documents, docSize);
 	}

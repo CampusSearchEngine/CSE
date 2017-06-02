@@ -35,7 +35,7 @@
         <img src="pic/icon.png" alt="返回首页" align="left" style="height: 80px;">
     </div>
     <div style="padding-top: 24px;" class="col-md-offset-3">
-        <form action="/search">
+        <form action="search">
             <table>
                 <tr>
                     <td>

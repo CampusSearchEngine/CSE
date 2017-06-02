@@ -26,6 +26,7 @@ public class BM25QueryParser extends QueryParser {
 	@Override
 	public Query parse(String query) {
 		BooleanQuery rtQuery = new BooleanQuery();
+		BooleanQuery.setMaxClauseCount(5000);
 		StringReader stringReader = new StringReader(query);
 		Analyzer analyzer = this.getAnalyzer();
 		String field = this.getField();
