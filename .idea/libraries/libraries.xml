@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="libraries">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jar/DOC" />
+      <root url="file://$PROJECT_DIR$/jar/heritrix" />
+      <root url="file://$PROJECT_DIR$/jar/JSON" />
+      <root url="file://$PROJECT_DIR$/jar/lucene" />
+      <root url="file://$PROJECT_DIR$/jar/PDF" />
+      <root url="file://$PROJECT_DIR$/jar/servlet" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/DOC" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/heritrix" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/JSON" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/lucene" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/PDF" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/servlet" recursive="false" />
+  </library>
+</component>

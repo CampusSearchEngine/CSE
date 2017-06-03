@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
-<%@ page import="bean.RequestBean" %>
-<%@ page import="bean.ResultBean" %>
 <%@ page import="java.util.Vector" %>
-<%@ page import="bean.EntryBean" %>
-<%@ page import="bean.ImagineBean" %>
+<%@ page import="JavaBean.*" %>
 <%
     RequestBean rb = (RequestBean) session.getAttribute("request");
 %>
@@ -49,7 +46,7 @@
                         </button>
                     </td>
                     <td style="padding-left: 20px;">
-                        <button type="button">校外搜索</button>
+                        <button onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索</button>
                     </td>
                 </tr>
             </table>
@@ -57,10 +54,10 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="options col-md-2" style="margin-left: 3.5%;">
+    <div class="options col-xs-2" style="margin-left: 3.5%;">
 
     </div>
-    <div class="content col-md-6">
+    <div class="content col-xs-6">
         <%
             ResultBean reb = (ResultBean) session.getAttribute("result");
             Vector<EntryBean> vec = reb.getVec();
@@ -82,7 +79,7 @@
                 <%
                     }
                 %>
-                <div class="abstract"><%=vec.elementAt(i).getAbst()%>
+                <div class="abstract"><%=vec.elementAt(i).getAbst()%>...
                 </div>
 
             </div>
@@ -101,18 +98,25 @@
             }
         %>
     </div>
-    <div class="attachment col-md-2">
-    </div>
-</div>
+    <div class="attachment col-xs-3" style="padding-left: 40px;">
+        <h5>实时热搜榜</h5>
+        <canvas id="hot_query" width="400" height="400">
 
-<div class="footer container-fluid">
-    <div class="col-md-2" style="margin-left: 3.5%"></div>
-    <div class="col-md-6">
-        <h4>相关搜索：</h4>
+        </canvas>
+        <br>
+        <%
+            ImagineBean ib = (ImagineBean) session.getAttribute("imagine");
+            Vector<String> svec = ib.getImagineWords();
+            if (svec.size() > 0) {
+        %>
+        <h5>您可能感兴趣的搜索</h5>
+        <h5>（结果由word2vec生成）</h5>
+        <%
+            }
+        %>
         <table style="padding-top: 10px; padding-bottom: 10px;">
             <%
-                ImagineBean ib = (ImagineBean) session.getAttribute("imagine");
-                Vector<String> svec = ib.getImagineWords();
+
                 for (int i = 0; i < svec.size(); ++i) {
                     if (i % 3 == 0) {
             %>
@@ -120,7 +124,7 @@
                 <%
                     }
                 %>
-                <td style="padding: 5px 20px 5px 20px">
+                <td style="padding: 5px 10px 5px 10px">
                     <a href="search?key=<%=svec.elementAt(i)%>&page_num=1"><%=svec.elementAt(i)%>
                     </a>
                 </td>
@@ -133,6 +137,13 @@
                 }
             %>
         </table>
+    </div>
+</div>
+
+<div class="footer container-fluid">
+    <div class="col-md-2" style="margin-left: 3.5%"></div>
+    <div class="col-md-6">
+
         <%
             if (reb.getTotal_num() > 10) {
         %>
@@ -163,13 +174,88 @@
     </div>
 </div>
 
-<div class="container-fluid end">
-
+<div style="padding: 24px 10px 30px 80px" class="col-xs-offset-2">
+    <form action="search">
+        <table>
+            <tr>
+                <td>
+                    <input type="text" class="search_input" name="key" value="<%=rb.getKey()%>">
+                    <input type="text" name="page_num" value="1" hidden>
+                </td>
+                <td>
+                    <button type="submit" class="search_btn">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </td>
+                <td style="padding-left: 20px;">
+                    <button onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索</button>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="vendor/jquery/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script>
+    $(document).ready(function () {
+        <%
+            HotQueryBean hqb = (HotQueryBean)session.getAttribute("hotquery");
+            Vector<String> hotQueries = hqb.getQueries();
+            Vector<Integer> hotCounts = hqb.getCounts();
+            int count = hotCounts.size();
+            String data_label = "", data_num = "";
+            for(int i = 0; i < count; ++i) {
+                data_label += "\"" + hotQueries.elementAt(i) + "\"";
+                data_num += hotCounts.elementAt(i);
+                if(i != count - 1) {
+                    data_label += ", ";
+                    data_num += ", ";
+                }
+            }
+        %>
+        var ctx = $('#hot_query').get(0).getContext('2d');
+        var hot_query = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: [<%=data_label%>],
+                datasets: [{
+                    label: '热搜指数',
+                    data: [<%=data_num%>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    })
+</script>
 </body>
 </html>
