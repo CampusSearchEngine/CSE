@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="htmlparser">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/jar/htmlparser" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/jar/htmlparser" recursive="false" type="SOURCES" />
+  </library>
+</component>

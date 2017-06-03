@@ -2,42 +2,30 @@
   <artifact type="exploded-war" name="CSE">
     <output-path>$USER_HOME$/tools/apache-tomcat-7.0.78/webapps/CSE</output-path>
     <root id="root">
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="module" name="junit.jar" module-name="CSE" />
-          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="CSE" />
-          <element id="library" level="module" name="filterbuilder.jar" module-name="CSE" />
-          <element id="library" level="module" name="fontbox-2.0.5.jar" module-name="CSE" />
-          <element id="library" level="module" name="htmllexer.jar" module-name="CSE" />
-          <element id="library" level="module" name="htmlparser.jar" module-name="CSE" />
-          <element id="library" level="module" name="IKAnalyzer3.2.5Stable.jar" module-name="CSE" />
-          <element id="library" level="module" name="lucene-core-3.5.0.jar" module-name="CSE" />
-          <element id="library" level="module" name="pdfbox-2.0.5.jar" module-name="CSE" />
-          <element id="library" level="module" name="pdfbox-debugger-2.0.5.jar" module-name="CSE" />
-          <element id="library" level="module" name="pdfbox-tools-2.0.5.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-examples-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-excelant-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-ooxml-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-ooxml-schemas-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="poi-scratchpad-3.10-FINAL-20140208.jar" module-name="CSE" />
-          <element id="library" level="module" name="preflight-2.0.5.jar" module-name="CSE" />
-          <element id="library" level="module" name="sax2.jar" module-name="CSE" />
-          <element id="library" level="module" name="src0_82.jar" module-name="CSE" />
-          <element id="library" level="module" name="stax-api-1.0.1.jar" module-name="CSE" />
-          <element id="library" level="module" name="thumbelina.jar" module-name="CSE" />
-          <element id="library" level="module" name="xmlbeans-2.3.0.jar" module-name="CSE" />
-          <element id="library" level="module" name="xmpbox-2.0.5.jar" module-name="CSE" />
-        </element>
-        <element id="directory" name="classes">
-          <element id="module-output" name="CSE" />
-        </element>
-        <element id="dir-copy" path="$PROJECT_DIR$/WebContent/WEB-INF" />
-      </element>
-      <element id="dir-copy" path="$PROJECT_DIR$/WebContent" />
       <element id="directory" name="index">
         <element id="dir-copy" path="$PROJECT_DIR$/index" />
       </element>
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="CSE" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="servlet" />
+          <element id="library" level="project" name="heritrix" />
+          <element id="library" level="project" name="doc" />
+          <element id="library" level="project" name="JSON" />
+          <element id="library" level="project" name="lucene" />
+          <element id="library" level="project" name="mongo-java-driver-3.4.2" />
+          <element id="library" level="project" name="pdf" />
+          <element id="library" level="project" name="doc_lib" />
+          <element id="library" level="project" name="doc_ooxml_lib" />
+          <element id="library" level="project" name="htmlparser_lib" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="dir-copy" path="$PROJECT_DIR$/WebContent/META-INF" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/WebContent" />
     </root>
   </artifact>
 </component>

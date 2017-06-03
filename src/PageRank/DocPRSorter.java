@@ -121,7 +121,7 @@ public class DocPRSorter {
 	}
 	
 	static float MongoGetPR(int pageID){
-		FindIterable<Document> iter = MongoDBs.pages.find(Filter.eq("ID", pageID));
+		FindIterable<Document> iter = MongoDBs.pages.find(Filters.eq("ID", pageID));
 		MongoCursor<Document> cursor = iter.iterator();
 		Document document = null;
 		if(cursor.hasNext()) {

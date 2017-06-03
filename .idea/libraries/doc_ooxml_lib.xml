@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="doc_ooxml_lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jar/DOC/ooxml-lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/DOC/ooxml-lib" recursive="false" />
+  </library>
+</component>
