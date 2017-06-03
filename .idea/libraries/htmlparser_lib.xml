@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="filterbuilder">
+  <library name="htmlparser_lib">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/jar/htmlparser/lib/filterbuilder.jar!/" />
       <root url="jar://$PROJECT_DIR$/jar/htmlparser/lib/htmllexer.jar!/" />

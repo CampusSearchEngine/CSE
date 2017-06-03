@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="heritrix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jar/heritrix" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/jar/heritrix" recursive="false" />
+  </library>
+</component>
