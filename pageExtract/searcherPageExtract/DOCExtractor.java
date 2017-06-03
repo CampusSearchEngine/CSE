@@ -21,7 +21,7 @@ import searcherUtils.IO;
 public class DOCExtractor implements Extractor {
 
 	@Override
-	public void extract(String URI, String toPath, String encoding, int ID) {
+	public void extract(String URI, String toPath, String encoding, int ID, String mirrorPath) {
 		boolean isDocx = false;
 		if(URI.endsWith(".docx")){
 			isDocx = true;
@@ -48,7 +48,7 @@ public class DOCExtractor implements Extractor {
 			for(int i = 1; i < lines.length; i++)
 				conStr += lines[i];
 			
-			URI = URI.replaceFirst(".*?\\\\", "");
+			URI = URI.substring(mirrorPath.length()+1);
 			JSONObject json = new JSONObject();
 			json.put("type", "doc");
 			json.put("title", titleStr);
@@ -68,7 +68,7 @@ public class DOCExtractor implements Extractor {
 	
 	static public void main(String[] args){
 		DOCExtractor pExtractor = new DOCExtractor();
-		pExtractor.extract(args[0], args[1], "utf-8", 0);
+		pExtractor.extract(args[0], args[1], "utf-8", 0, "");
 	}
 
 }

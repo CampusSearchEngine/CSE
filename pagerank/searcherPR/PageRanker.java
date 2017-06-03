@@ -131,11 +131,12 @@ public class PageRanker {
 	void wrtiePageRank2DB(){
 		MongoDBs.initDB();
 		Iterator iterator = pageMap.entrySet().iterator();
+		int count = 0;
 		while (iterator.hasNext()) {
+			if(++count % 1000 == 0)
+				System.out.println(count + " pages written to DB");
 			Map.Entry entry = (Map.Entry) iterator.next();
 			Page page = (Page) entry.getValue();
-			if(page.id == 2811)
-				System.out.println(page.title + " " + page.pageRank);
 			MongoDBs.pages.findOneAndUpdate(Filters.eq("ID", page.id), new Document("$set",new Document("pageRank",page.pageRank)));
 		}
 	}

@@ -36,7 +36,8 @@ public class IDAssigner {
 		
 		DirIter iter = new DirIter(MirrorPath);
 		while(iter.hasNext()){
-			String URI = iter.next().replaceAll(MirrorPath+"\\\\", "");
+			String URI = iter.next();
+			URI = URI.substring(MirrorPath.length()+1);
 			int type = FileValidator.validate(URI);
 			if(type != FileValidator.INVALID && type != FileValidator.WDOC)
 				IDMap.put(URI, ++maxID);

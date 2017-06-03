@@ -23,7 +23,7 @@ import searcherUtils.IO;
 public class PDFExtractor implements Extractor {
 
 	@Override
-	public void extract(String URI, String toPath, String encoding, int ID) {
+	public void extract(String URI, String toPath, String encoding, int ID, String mirrorPath) {
 		String txtDoc = URI.substring(0, URI.length()-3) + "txt";
 		try {
 			ExtractText.main(new String[]{URI, txtDoc});
@@ -37,7 +37,7 @@ public class PDFExtractor implements Extractor {
 			}
 			bReader.close();
 			
-			URI = URI.replaceFirst(".*?\\\\", "");
+			URI = URI.substring(mirrorPath.length()+1);
 			JSONObject json = new JSONObject();
 			json.put("type", "pdf");
 			json.put("title", titleStr);
@@ -57,6 +57,6 @@ public class PDFExtractor implements Extractor {
 	
 	static public void main(String[] args){
 		PDFExtractor pExtractor = new PDFExtractor();
-		pExtractor.extract(args[0], args[1], "utf-8", 0);
+		pExtractor.extract(args[0], args[1], "utf-8", 0, "");
 	}
 }

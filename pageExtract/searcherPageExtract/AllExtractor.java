@@ -53,7 +53,6 @@ public class AllExtractor {
 	public void doExtract() {
 		DirIter dirIter = new DirIter(mirrorPath);
 		File mirrorDir = new File(mirrorPath);		// get the exact dir name of mirrorPath
-		mirrorPath = mirrorDir.getName();
 		
 		int count = 0;
 		while(dirIter.hasNext()){
@@ -62,7 +61,7 @@ public class AllExtractor {
 				System.out.println(count + "/" + dirIter.getCount() + " DOCs Extracted");
 			String filename = dirIter.next();
 			//System.out.println(filename + " " + FileValidator.validate(filename));
-			String URI = filename.replaceFirst(mirrorPath+"\\\\", "");
+			String URI = filename.substring(mirrorPath.length()+1);
 			String output = "extracted\\" + URI ;
 			// Get id of this page, if null(this page is unwanted type) continue
 			Integer idObj = IDMap.get(URI);
@@ -71,6 +70,7 @@ public class AllExtractor {
 				id = idObj.intValue();
 			else
 			{
+				//System.out.println(filename);
 				//System.out.println(URI);
 				continue;
 			}
@@ -80,15 +80,15 @@ public class AllExtractor {
 			switch (FileValidator.validate(filename)) {
 			case FileValidator.HTML:
 				output = output.replaceAll(FileValidator.HTML_SUFFIX, WDOC_SUFFIX);
-				htmlExtractor.extract(filename, output, "utf-8", id);
+				htmlExtractor.extract(filename, output, "utf-8", id, mirrorPath);
 				break;
 			case FileValidator.DOC:
 				output = output.replaceAll(FileValidator.DOC_SUFFIX, WDOC_SUFFIX);
-				docExtractor.extract(filename, output, "utf-8", id);
+				docExtractor.extract(filename, output, "utf-8", id, mirrorPath);
 				break;
 			case FileValidator.PDF:
 				output = output.replaceAll(FileValidator.PDF_SUFFIX, WDOC_SUFFIX);
-				pdfExtractor.extract(filename, output, "utf-8", id);
+				pdfExtractor.extract(filename, output, "utf-8", id, mirrorPath);
 				break;
 			default:
 				break;
