@@ -39,6 +39,7 @@ public class CampusSearcher {
 	private Analyzer analyzer;
 	private CSSHighlighter highlighter;
 	private float avgLength = 1.0f;
+	public String workingPath;
 	
 	static final int MAX_RESULT_NUM = 100;
 	static final int RESULT_PER_PAGE = 10;
@@ -112,7 +113,7 @@ public class CampusSearcher {
 				new float[] { 1.0f, 2.0f, 0.5f, 0.1f });
 		
 		ScoreDoc[] hits = results.scoreDocs;
-		hits = DocPRSorter.sort(hits, searcher);
+		hits = DocPRSorter.sort(hits, searcher, workingPath);
 		/*for (int i = 0; i < hits.length; i++) { // output raw format
 			Document doc = this.getDoc(hits[i].doc);
 			System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score + " title= " + doc.get("title"));
@@ -136,7 +137,8 @@ public class CampusSearcher {
 			String content = doc.get("content");
 			content = highlighter.Highlight(content, query, 100);
 			if(content == null){
-				content = doc.get("content").substring(0, MAX_CONTENT_LEN);
+				content = doc.get("content");
+				content = content.substring(0, Math.min(MAX_CONTENT_LEN,content.length()));
 			}
 			doc.removeField("content");
 			doc.add(new Field("content", content, Store.YES, Index.ANALYZED));	

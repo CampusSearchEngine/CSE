@@ -1,8 +1,13 @@
 package searcherPR;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Vector;
 
 import javax.print.Doc;
 
@@ -10,6 +15,7 @@ import org.apache.lucene.LucenePackage;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.poi.ss.formula.eval.FunctionEval;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -26,6 +32,9 @@ import sun.print.resources.serviceui;
  * */
 public class DocPRSorter {
 	
+	static Vector<Page> pages;
+	
+	static final String PR_LIST_FILE = "/prList";
 	static final float a = 0.95f, b = 0.05f;		// final score for a doc is a*luceneScore + b*PageRank£¨percentiled£©
 	
 	/*
@@ -33,7 +42,7 @@ public class DocPRSorter {
 	 * @param originDocs : the doc array to be sorted
 	 * @Param searcher	 : the searcher that gave the docs, used to get page ID and PageRank 
 	 * */
-	public static ScoreDoc[] sort(ScoreDoc[] originDocs, IndexSearcher searcher){
+	public static ScoreDoc[] sort(ScoreDoc[] originDocs, IndexSearcher searcher, String workingPath){
 		// compute percentile pageRank
 		float[] pageRanks = new float[originDocs.length];
 		float maxPR = 0.0f;
@@ -41,7 +50,7 @@ public class DocPRSorter {
 			try {
 				org.apache.lucene.document.Document document = searcher.doc(originDocs[i].doc);
 				int id = Integer.parseInt(document.get("ID"));
-				pageRanks[i] = MongoGetPR(id);
+				pageRanks[i] = MemGetPR(id,workingPath);
 				maxPR = maxPR < pageRanks[i] ? pageRanks[i] : maxPR;
 			} catch (CorruptIndexException e) {
 				e.printStackTrace();
@@ -72,6 +81,48 @@ public class DocPRSorter {
 		});
 		
 		return originDocs;
+	}
+	
+	static float MemGetPR(int pageID, String workingPath){
+		if(pages == null){
+			readPages(workingPath + PR_LIST_FILE);
+		}
+		return ((Double)(pages.get(pageID).pageRank)).floatValue();
+	}
+	
+	static void readPages(String filename) {
+		int pageCnt = 0;
+		System.out.println("reading pages...");
+		pages = new Vector<Page>();
+		try {
+			File file = new File(filename);
+			//System.out.println(file.getAbsolutePath());
+			FileInputStream fileInputStream = new FileInputStream(file);
+			InputStreamReader iReader = new InputStreamReader(fileInputStream,"utf-8");
+			BufferedReader bReader = new BufferedReader(iReader);
+			String line;
+			
+			while((line = bReader.readLine()) != null){
+				String[] parts = line.split("<sep>");
+				int id = Integer.parseInt(parts[0]);
+				String title = parts[1];
+				double pageRank = Double.parseDouble(parts[2]);
+				int outDegree = Integer.parseInt(parts[3]);
+				int inDegree = Integer.parseInt(parts[4]);
+				
+				Page page = new Page(title, id);
+				page.pageRank = pageRank;
+				page.inDegree = inDegree;
+				page.outDegree = outDegree;
+				
+				pages.addElement(page);
+			}
+			bReader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		pageCnt = pages.size();
+		System.out.println(pageCnt + " pages read");
 	}
 	
 	static float MongoGetPR(int pageID){

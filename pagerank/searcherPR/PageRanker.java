@@ -160,7 +160,7 @@ public class PageRanker {
 		pageRanker.buildPageMap(args[0], args[1]);
 		pageRanker.initPageRank();
 		pageRanker.updateAll();
-		pageRanker.wrtiePageRank2DB();
+		//pageRanker.wrtiePageRank2DB();
 		pageRanker.writePageRank(args[4]);
 		System.out.println("pageRanker task over");
 		//pageRanker.showPage(25883781);

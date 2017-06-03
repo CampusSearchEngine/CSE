@@ -30,7 +30,7 @@ public class SearchServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         cosineData = new Vector<CosineUnit>();
-        try {
+        /*try {
             FileReader reader = new FileReader("cse_word2vec"); // 读取文本中内容
             BufferedReader br = new BufferedReader(reader);
 
@@ -61,12 +61,13 @@ public class SearchServlet extends HttpServlet {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     static void initSearcher(String workingPath) {
 
         searcher = new CampusSearcher(workingPath + INDEX_PATH);
+        searcher.workingPath = workingPath;
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -90,8 +91,7 @@ public class SearchServlet extends HttpServlet {
             return;
         } else {
             key = keyStr;
-            //not needed and invalid
-            key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
+            //key = new String(keyStr.getBytes("iso8859-1"),"UTF-8");
         }
 
         if (!pageNumStr.equals("")) {
