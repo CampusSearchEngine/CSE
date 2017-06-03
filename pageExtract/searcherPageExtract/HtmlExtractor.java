@@ -3,6 +3,8 @@ package searcherPageExtract;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -35,6 +37,46 @@ import sun.util.logging.resources.logging_es;
  * */
 public class HtmlExtractor implements Extractor{
 	
+	/**	默认过滤器，提取title,anchor,h1~h5
+	 * @return
+	 */
+	NodeFilter getDefaultFilter(){
+		TagNameFilter titleFilter = new TagNameFilter("title");
+		TagNameFilter aFilter = new TagNameFilter("a");
+		TagNameFilter pFilter = new TagNameFilter("p");
+		TagNameFilter h1Filter = new TagNameFilter("h1");
+		TagNameFilter h2Filter = new TagNameFilter("h2");
+		TagNameFilter h3Filter = new TagNameFilter("h3");
+		TagNameFilter h4Filter = new TagNameFilter("h4");
+		TagNameFilter h5Filter = new TagNameFilter("h5");
+		
+		NodeFilter[] nodeFilters = {titleFilter, pFilter,h1Filter,h2Filter,h3Filter,h4Filter,h5Filter,
+									aFilter};
+		OrFilter orFilter = new OrFilter(nodeFilters);
+		return orFilter;
+	}
+	
+	/**	根据网页的URI获得相应的过滤器
+	 * @param URI	网页的URI
+	 * @return 对新闻详细页，返回新闻过滤器  其他返回默认过滤器
+	 */
+	NodeFilter getFilter(String URI){
+		
+		/*	对于新闻详细页，提取其title，anchor，article中的内容
+		 * */
+		if(URI.contains("news.tsinghua.edu.cn") && !URI.contains("index.html")){
+			TagNameFilter titleFilter = new TagNameFilter("title");
+			TagNameFilter anchorFilter = new TagNameFilter("a");
+			TagNameFilter articleFilter = new TagNameFilter("article");
+			NodeFilter[] nodeFilters = {titleFilter, anchorFilter, articleFilter};
+			
+			OrFilter orFilter = new OrFilter(nodeFilters);
+			return orFilter;
+		}
+		
+		return getDefaultFilter();
+	}
+	
 	@Override
 	public void extract(String URI, String toPath, String encoding, int ID) {
 		try {
@@ -48,20 +90,12 @@ public class HtmlExtractor implements Extractor{
 			parser.setInputHTML(html);
 			parser.setEncoding(encoding);
 			
-			TagNameFilter titleFilter = new TagNameFilter("title");
-			TagNameFilter pFilter = new TagNameFilter("p");
-			TagNameFilter h1Filter = new TagNameFilter("h1");
-			TagNameFilter h2Filter = new TagNameFilter("h2");
-			TagNameFilter h3Filter = new TagNameFilter("h3");
-			TagNameFilter h4Filter = new TagNameFilter("h4");
-			TagNameFilter h5Filter = new TagNameFilter("h5");
 			TagNameFilter aFilter = new TagNameFilter("a");
+			TagNameFilter titleFilter = new TagNameFilter("title");
 			
-			NodeFilter[] nodeFilters = {titleFilter, pFilter,h1Filter,h2Filter,h3Filter,h4Filter,h5Filter,
-										aFilter};
-			OrFilter orFilter = new OrFilter(nodeFilters);
+			NodeFilter combinedFilter = getFilter(URI);
 			
-			NodeList nodeList = parser.parse(orFilter);
+			NodeList nodeList = parser.parse(combinedFilter);
 			Node[] nodeArray = nodeList.toNodeArray();
 			
 			JSONObject json = new JSONObject();
@@ -75,14 +109,13 @@ public class HtmlExtractor implements Extractor{
 				if(titleFilter.accept(node)){
 					if(node.getChildren() != null)
 						json.put("title",node.getChildren().elementAt(0).getText());
-				}
-				else if(pFilter.accept(node) || h1Filter.accept(node) || h2Filter.accept(node) ||
-						h3Filter.accept(node) || h4Filter.accept(node) || h5Filter.accept(node) ){
-					absString += digText(node);
-				}
-				else if(aFilter.accept(node)){
+				}else if(aFilter.accept(node)){
 					anchorString += digText(node);
 				}
+				else if(combinedFilter.accept(node) ){
+					absString += digText(node);
+				}
+				
 			}
 			
 			URI = URI.replaceFirst(".*?\\\\", "");
@@ -118,26 +151,29 @@ public class HtmlExtractor implements Extractor{
 	}
 	
 	/*
-	 * get contained plain text in a html tag
-	 * assuming every first-level subNode is a linear structure, and its leaf node contains the text 
+	 * get contained plain text in a html tag recursively
 	 * */
 	String digText(Node node){
+		if(node instanceof TextNode){
+			return node.getText();
+		}
 		String text = new String();
 		if(node.getChildren() != null){
 			for(int i = 0; i < node.getChildren().size(); i++){
 				Node subNode = node.getChildren().elementAt(i);
-				while(subNode.getChildren() != null)
-					subNode = subNode.getChildren().elementAt(0);
 				if(subNode instanceof TextNode){
-					String nodeText = subNode.getText();
-					nodeText = nodeText.replaceAll("(&nbsp);", "");
-					nodeText = nodeText.replaceAll("\" \\u002B entry\\u005B\"title\"] \\u002B \"", "");
-					if(!nodeText.startsWith("a href=") && nodeText.length() > 0){
-						text += " " + nodeText;
-					}
+					text += subNode.getText();
+				}
+				else{
+					text += digText(subNode);
 				}
 			}
 		}
+		else{
+			return text;
+		}
+		text = text.replaceAll("(&nbsp);", "");
+		text = text.replaceAll("\" \\u002B entry\\u005B\"title\"] \\u002B \"", "");
 		return text;
 	}
 }
