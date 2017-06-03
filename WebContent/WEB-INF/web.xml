@@ -12,4 +12,12 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MisscutServlet</servlet-name>
+        <servlet-class>Servlet.MisscutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MisscutServlet</servlet-name>
+        <url-pattern>/correction</url-pattern>
+    </servlet-mapping>
 </web-app>
