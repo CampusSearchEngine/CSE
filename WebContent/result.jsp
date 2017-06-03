@@ -69,7 +69,7 @@
 
         <div id="<%=i + 1%>" class="entry">
             <div class="link">
-                <a href="<%=vec.elementAt(i).getLink()%>"><%=vec.elementAt(i).getTitle()%>
+                <a href="http://<%=vec.elementAt(i).getLink()%>"><%=vec.elementAt(i).getTitle()%>
                 </a>
             </div>
             <div>

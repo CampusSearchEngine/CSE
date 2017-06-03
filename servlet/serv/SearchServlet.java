@@ -29,6 +29,7 @@ public class SearchServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+
         cosineData = new Vector<CosineUnit>();
         try {
             FileReader reader = new FileReader("cse_word2vec"); // 读取文本中内容
