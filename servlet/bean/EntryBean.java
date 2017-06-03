@@ -1,4 +1,4 @@
-package serv;
+package bean;
 
 import java.util.Date;
 
@@ -8,6 +8,9 @@ import java.util.Date;
 public class EntryBean {
     private String link;
     private String title;
+    private String abst;
+    private Date date;
+    private String type;
 
     public String getLink() {
         return link;
@@ -48,10 +51,6 @@ public class EntryBean {
     public void setType(String type) {
         this.type = type;
     }
-
-    private String abst;
-    private Date date;
-    private String type;
 
 
 }

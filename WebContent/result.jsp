@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
-<%@ page import="serv.RequestBean" %>
-<%@ page import="serv.ResultBean" %>
+<%@ page import="bean.RequestBean" %>
+<%@ page import="bean.ResultBean" %>
 <%@ page import="java.util.Vector" %>
-<%@ page import="serv.EntryBean" %>
+<%@ page import="bean.EntryBean" %>
+<%@ page import="bean.ImagineBean" %>
 <%
     RequestBean rb = (RequestBean) session.getAttribute("request");
 %>
@@ -41,7 +42,6 @@
                     <td>
                         <input type="text" class="search_input" name="key" value="<%=rb.getKey()%>">
                         <input type="text" name="page_num" value="1" hidden>
-                        <input type="text" name="time_filter" value="0" hidden>
                     </td>
                     <td>
                         <button type="submit" class="search_btn">
@@ -108,19 +108,35 @@
 <div class="footer container-fluid">
     <div class="col-md-2" style="margin-left: 3.5%"></div>
     <div class="col-md-6">
-        <p>相关搜索：</p>
-        <p style="padding-top: 10px; padding-bottom: 10px;">
-            <a href="#">blablalba....</a>&nbsp;&nbsp;<a href="#">blablalba....</a>&nbsp;&nbsp;<a
-                href="#">blablalba....</a><br>
-            <a href="#">blablalba....</a>&nbsp;&nbsp;<a href="#">blablalba....</a>&nbsp;&nbsp;<a
-                href="#">blablalba....</a><br>
-            <a href="#">blablalba....</a>&nbsp;&nbsp;<a href="#">blablalba....</a>&nbsp;&nbsp;<a
-                href="#">blablalba....</a><br>
-        </p>
+        <h4>相关搜索：</h4>
+        <table style="padding-top: 10px; padding-bottom: 10px;">
+            <%
+                ImagineBean ib = (ImagineBean) session.getAttribute("imagine");
+                Vector<String> svec = ib.getImagineWords();
+                for (int i = 0; i < svec.size(); ++i) {
+                    if (i % 3 == 0) {
+            %>
+            <tr>
+                <%
+                    }
+                %>
+                <td style="padding: 5px 20px 5px 20px">
+                    <a href="search?key=<%=svec.elementAt(i)%>&page_num=1"><%=svec.elementAt(i)%>
+                    </a>
+                </td>
+                <%
+                    if (i % 3 == 2) {
+                %>
+            </tr>
+            <%
+                    }
+                }
+            %>
+        </table>
         <%
             if (reb.getTotal_num() > 10) {
         %>
-        <div class="buttons row">
+        <div class="buttons row" style="padding: 20px;">
             <%
                 int bc = reb.getTotal_num() / 10;
                 if (reb.getTotal_num() % 10 > 0) bc += 1;
@@ -132,7 +148,8 @@
             <%
             } else {
             %>
-            <button class="button button-circle"><%=i + 1%>
+            <button class="button button-circle"
+                    onclick="window.location='search?key=<%=rb.getKey()%>&page_num=<%=i+1%>';"><%=i + 1%>
             </button>
             &nbsp;
             <%

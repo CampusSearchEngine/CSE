@@ -1,4 +1,6 @@
-package serv;
+package bean;
+
+import bean.EntryBean;
 
 import java.util.Vector;
 
