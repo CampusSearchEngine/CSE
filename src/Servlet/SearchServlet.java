@@ -32,7 +32,7 @@ public class SearchServlet extends HttpServlet {
         super.init(config);
 
         cosineData = new Vector<CosineUnit>();
-        try {
+        /*try {
             FileReader reader = new FileReader("cse_word2vec"); // 读取文本中内容
             BufferedReader br = new BufferedReader(reader);
 
@@ -63,7 +63,7 @@ public class SearchServlet extends HttpServlet {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     static void initSearcher(String workingPath) {

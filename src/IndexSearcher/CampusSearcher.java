@@ -102,8 +102,8 @@ public class CampusSearcher {
     }
 
     ScoreDoc[] doQuery(String query) {
-        TopDocs results = this.searchQuery(query, new String[]{"content", "title", "anchor", "URI"}, MAX_RESULT_NUM,
-                new float[]{1.0f, 2.0f, 0.5f, 0.1f});
+        TopDocs results = this.searchQuery(query, new String[]{/*"content", */"title", "anchor", "URI"}, MAX_RESULT_NUM,
+                new float[]{/*1.0f,*/ 2.0f, 0.5f, 0.1f});
 
         ScoreDoc[] hits = results.scoreDocs;
         hits = DocPRSorter.sort(hits, searcher, workingPath);

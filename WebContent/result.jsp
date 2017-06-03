@@ -29,10 +29,10 @@
 </head>
 <body>
 <div class="header" style="vertical-align: middle">
-    <div class="col-md-offset-1">
+    <div style="padding-left: 100px;">
         <img src="pic/icon.png" alt="返回首页" align="left" style="height: 80px;">
     </div>
-    <div style="padding-top: 24px;" class="col-md-offset-3">
+    <div style="padding-top: 24px;padding-left: 80px;" class="col-md-offset-2">
         <form action="search">
             <table>
                 <tr>
@@ -51,6 +51,7 @@
                 </tr>
             </table>
         </form>
+        <h5 hidden id="correct_ctl">您要找的是不是： &nbsp;&nbsp;<b id="correction"></b></h5>
     </div>
 </div>
 <div class="container-fluid">
@@ -196,10 +197,11 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="vendor/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="vendor/jquery/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/Chart.min.js"></script>
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/ajaxCookies.js"></script>
 <script>
     $(document).ready(function () {
         <%
@@ -255,7 +257,35 @@
             }
         });
 
-    })
+        var text = $('.search_input').val();
+        text = {"text":text};
+        $.post("/correction", text, function(data, status) {
+            data = JSON.parse(data);
+            console.log(data);
+            var result = data.result;
+            var html = '<a id="cor_link">';
+            var word = "";
+            var error = false;
+            for (var i = 0; i < result.length; i++) {
+                if(result[i].t == 0 || result[i].t > 9) {
+                    html += result[i].n;
+                    word += result[i].n;
+                } else {
+                    error = true;
+                    html += "<span style='color: red'>" + result[i].r[0].n + "</span>";
+                    word += result[i].r[0].n;
+                }
+            }
+            html += "</a>";
+            $('#correction').html(html);
+            $('#cor_link').attr("href", "search?key=" + word + "&page_num=1");
+            if(error) {
+                $('#correct_ctl').attr('hidden', false);
+            }
+            console.log(data);
+        });
+
+    });
 </script>
 </body>
 </html>
