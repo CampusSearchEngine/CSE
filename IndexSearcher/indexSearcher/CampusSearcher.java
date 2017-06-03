@@ -120,7 +120,7 @@ public class CampusSearcher {
 		ScoreDoc[] sDocs = doQuery(query);
 		int docSize = sDocs.length;
 		
-		int startIndex = pageNum * RESULT_PER_PAGE;
+		int startIndex = (pageNum - 1) * RESULT_PER_PAGE;
 		int endIndex = startIndex + RESULT_PER_PAGE;
 		while(startIndex < docSize && startIndex < endIndex)
 			documents.add(getDoc(sDocs[startIndex++].doc));
