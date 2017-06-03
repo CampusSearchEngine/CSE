@@ -78,7 +78,7 @@ public class HtmlExtractor implements Extractor{
 	}
 	
 	@Override
-	public void extract(String URI, String toPath, String encoding, int ID) {
+	public void extract(String URI, String toPath, String encoding, int ID, String mirrorPath) {
 		try {
 			BufferedReader bReader = IO.getReader(URI);
 			String html = new String(), line;
@@ -118,7 +118,7 @@ public class HtmlExtractor implements Extractor{
 				
 			}
 			
-			URI = URI.replaceFirst(".*?\\\\", "");
+			URI = URI.substring(mirrorPath.length()+1);
 			json.put("type", "html");
 			json.put("URI", URI);
 			json.put("content", absString);
@@ -134,7 +134,7 @@ public class HtmlExtractor implements Extractor{
 				if(encoding.equals("utf-8")){		// if encountering encoding problem, just switch encoding and retry
 					//e.printStackTrace();
 					//System.out.println("retry: " + URI);
-					extract(URI, toPath, "GB2312",ID);
+					extract(URI, toPath, "GB2312",ID, mirrorPath);
 					//System.out.println("retry success");
 					return;
 				}
@@ -147,7 +147,7 @@ public class HtmlExtractor implements Extractor{
 	
 	static public void main(String[] args){
 		HtmlExtractor pExtractor = new HtmlExtractor();
-		pExtractor.extract(args[0], args[1], "utf-8", 0);
+		pExtractor.extract(args[0], args[1], "utf-8", 0, "");
 	}
 	
 	/*

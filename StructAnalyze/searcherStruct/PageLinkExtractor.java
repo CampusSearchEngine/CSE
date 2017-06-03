@@ -60,42 +60,49 @@ public class PageLinkExtractor {
 	 */
 	public void scanPageLink(String MirrorPath) {
 		DirIter iter = new DirIter(MirrorPath);
-		
+		String remoteURI = "", localURI = "", host = "";
 		int count = 0;
-		while (iter.hasNext()) {
-			if(count++ % 10000 == 0)
-				System.out.println(count + "/" + iter.getCount() + " Pages Analyzed");
-			String localURI = iter.next();
-			String remoteURI = localURI.replaceAll(MirrorPath+"\\\\", "");
-			String host = remoteURI.split("\\\\")[0];
-			int type = FileValidator.validate(remoteURI);
-			// process only HTML files
-			if(type == FileValidator.HTML){
-				int rootID = IDMap.get(remoteURI);
-				Vector<Integer> childernID = new Vector<Integer>();
-				
-				Set<String> sublinks = extracLinks(localURI, null);
-				/*if(sublinks.size() > 0){
-					System.out.println(remoteURI + " has " + sublinks.size() + " outlinks");
-				}*/
-				Iterator<String> linkIter = sublinks.iterator();
-				while(linkIter.hasNext()){				//find every subURI's corresponding ID, if not null, add to childrenID
-					String subURI = host + linkIter.next();
-					subURI = subURI.replaceAll("#dqwz", "");
-					subURI = subURI.replaceAll("http://", "");
-					subURI = subURI.replaceAll("/", "\\\\");
+		try {
+			while (iter.hasNext()) {
+				if(++count % 1000 == 0)
+					System.out.println(count + "/" + iter.getCount() + " Pages Analyzed");
+				localURI = iter.next();
+				remoteURI = localURI.substring(MirrorPath.length()+1);
+				host = remoteURI.split("\\\\")[0];
+				int type = FileValidator.validate(remoteURI);
+				// process only HTML files
+				if(type == FileValidator.HTML){
+					int rootID = IDMap.get(remoteURI);
+					Vector<Integer> childernID = new Vector<Integer>();
 					
-					Integer subID = IDMap.get(subURI);
-					if(subID != null){
-						childernID.addElement(subID);
+					Set<String> sublinks = extracLinks(localURI, null);
+					/*if(sublinks.size() > 0){
+						System.out.println(remoteURI + " has " + sublinks.size() + " outlinks");
+					}*/
+					Iterator<String> linkIter = sublinks.iterator();
+					while(linkIter.hasNext()){				//find every subURI's corresponding ID, if not null, add to childrenID
+						String subURI = host + linkIter.next();
+						subURI = subURI.replaceAll("#dqwz", "");
+						subURI = subURI.replaceAll("http://", "");
+						subURI = subURI.replaceAll("/", "\\\\");
+						
+						Integer subID = IDMap.get(subURI);
+						if(subID != null){
+							childernID.addElement(subID);
+						}
 					}
+					/*if(sublinks.size() > 0){
+						System.out.println("with " + childernID.size() + " exist");
+					}*/
+					linkMap.put(rootID, childernID);
 				}
-				/*if(sublinks.size() > 0){
-					System.out.println("with " + childernID.size() + " exist");
-				}*/
-				linkMap.put(rootID, childernID);
 			}
+			
+		} catch (Exception e) {
+			System.out.println(remoteURI);
+			e.printStackTrace();
 		}
+		
 	}
 
 	// 获取子链接，url为网页url，filter是链接过滤器，返回该页面子链接的HashSet
