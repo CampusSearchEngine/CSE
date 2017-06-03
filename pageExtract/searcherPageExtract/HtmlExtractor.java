@@ -62,13 +62,14 @@ public class HtmlExtractor implements Extractor{
 	 */
 	NodeFilter getFilter(String URI){
 		
-		/*	对于新闻详细页，提取其title，anchor，article中的内容
+		/*	对于新闻详细页，提取其title，anchor，article, p中的内容
 		 * */
 		if(URI.contains("news.tsinghua.edu.cn") && !URI.contains("index.html")){
 			TagNameFilter titleFilter = new TagNameFilter("title");
 			TagNameFilter anchorFilter = new TagNameFilter("a");
 			TagNameFilter articleFilter = new TagNameFilter("article");
-			NodeFilter[] nodeFilters = {titleFilter, anchorFilter, articleFilter};
+			TagNameFilter pFilter = new TagNameFilter("p");
+			NodeFilter[] nodeFilters = {titleFilter, anchorFilter, articleFilter,pFilter};
 			
 			OrFilter orFilter = new OrFilter(nodeFilters);
 			return orFilter;
@@ -103,7 +104,6 @@ public class HtmlExtractor implements Extractor{
 					
 			String absString = new String();
 			String anchorString = new String();
-			
 			for(Node node : nodeArray){
 				
 				if(titleFilter.accept(node)){

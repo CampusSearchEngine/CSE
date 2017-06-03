@@ -2,12 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5647a69d-3048-4a8f-9522-d76489799db9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/lucene_highlighter_3_5_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/prList" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/htmlex/test4.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_0.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_1.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_2.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_3.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_4.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_5.tis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.fdt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.fdx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.fnm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.frq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.nrm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.prx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.tii" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index/_6.tis" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/indexSearcher/CampusSearcher.class" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/indexSearcher/CampusSearcher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/DocPRSorter$1.class" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/DocPRSorter$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/DocPRSorter.class" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/DocPRSorter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/PageRanker.class" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPR/PageRanker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPageExtract/HtmlExtractor.class" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/searcherPageExtract/HtmlExtractor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index/segments_1" afterPath="$PROJECT_DIR$/index/segments_1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CSE.iml" afterPath="$PROJECT_DIR$/CSE.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java" afterPath="$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/result.jsp" afterPath="$PROJECT_DIR$/WebContent/result.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/classes/.gitignore" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/classes/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index/global.txt" afterPath="$PROJECT_DIR$/index/global.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pageExtract/searcherPageExtract/HtmlExtractor.java" afterPath="$PROJECT_DIR$/pageExtract/searcherPageExtract/HtmlExtractor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pagerank/searcherPR/DocPRSorter.java" afterPath="$PROJECT_DIR$/pagerank/searcherPR/DocPRSorter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pagerank/searcherPR/PageRanker.java" afterPath="$PROJECT_DIR$/pagerank/searcherPR/PageRanker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/servlet/serv/SearchServlet.java" afterPath="$PROJECT_DIR$/servlet/serv/SearchServlet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -27,41 +93,46 @@
             <state relative-caret-position="304">
               <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
-                <marker date="1496473989000" expanded="false" signature="5273:5281" ph="&lt;~&gt;" />
+                <marker date="1496482381000" expanded="true" signature="2748:5707" ph="{...}" />
+                <marker date="1496482381000" expanded="false" signature="3718:3729" ph="&lt;~&gt;" />
+                <marker date="1496482381000" expanded="true" signature="4712:5196" ph="{...}" />
+                <marker date="1496482381000" expanded="true" signature="4813:5178" ph="{...}" />
+                <marker date="1496482381000" expanded="false" signature="5286:5294" ph="&lt;~&gt;" />
+                <marker date="1496482381000" expanded="true" signature="5833:5865" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CampusSearcher.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CampusSearcher.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2071">
-              <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+            <state relative-caret-position="153">
+              <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
               <folding>
-                <element signature="e#3775#3776#0" expanded="true" />
-                <element signature="e#3807#3808#0" expanded="true" />
-                <element signature="e#4564#4574#0" expanded="true" />
+                <element signature="e#3379#3380#0" expanded="true" />
+                <element signature="e#3402#3403#0" expanded="true" />
+                <element signature="e#4123#4133#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="result.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="result.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/result.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="651">
               <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1496473989000" expanded="false" signature="2051:2070" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="2307:2325" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="2997:3010" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="3607:3618" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="3836:3853" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="3934:3974" ph="..." />
-                <marker date="1496473989000" expanded="false" signature="4805:4819" ph="..." />
-                <marker date="1496473989000" expanded="true" signature="5331:5364" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="2051:2070" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="2307:2325" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="2997:3010" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="3607:3618" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="3836:3853" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="3934:3974" ph="..." />
+                <marker date="1496482373000" expanded="false" signature="4805:4819" ph="..." />
+                <marker date="1496482373000" expanded="true" signature="5331:5364" ph="..." />
               </folding>
             </state>
           </provider>
@@ -163,9 +234,9 @@
         <option value="$PROJECT_DIR$/servlet/bean/RequestBean.java" />
         <option value="$PROJECT_DIR$/WebContent/index.html" />
         <option value="$PROJECT_DIR$/lucene/luceneExtends/CSSHighlighter.java" />
-        <option value="$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java" />
         <option value="$PROJECT_DIR$/servlet/serv/SearchServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/result.jsp" />
+        <option value="$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java" />
       </list>
     </option>
   </component>
@@ -275,6 +346,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IndexSearcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="indexSearcher" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -928,7 +1017,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55250000" />
+    <option name="totallyTimeSpent" value="55390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1210,8 +1299,6 @@
           <caret line="85" column="64" lean-forward="false" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#2132#2133#0" expanded="false" />
-            <element signature="e#2178#2179#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1301,24 +1388,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2071">
-          <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
-          <folding>
-            <element signature="e#3775#3776#0" expanded="true" />
-            <element signature="e#3807#3808#0" expanded="true" />
-            <element signature="e#4564#4574#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/servlet/serv/SearchServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <marker date="1496473989000" expanded="false" signature="5273:5281" ph="&lt;~&gt;" />
+            <marker date="1496482381000" expanded="true" signature="2748:5707" ph="{...}" />
+            <marker date="1496482381000" expanded="false" signature="3718:3729" ph="&lt;~&gt;" />
+            <marker date="1496482381000" expanded="true" signature="4712:5196" ph="{...}" />
+            <marker date="1496482381000" expanded="true" signature="4813:5178" ph="{...}" />
+            <marker date="1496482381000" expanded="false" signature="5286:5294" ph="&lt;~&gt;" />
+            <marker date="1496482381000" expanded="true" signature="5833:5865" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1329,14 +1409,26 @@
           <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1496473989000" expanded="false" signature="2051:2070" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="2307:2325" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="2997:3010" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="3607:3618" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="3836:3853" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="3934:3974" ph="..." />
-            <marker date="1496473989000" expanded="false" signature="4805:4819" ph="..." />
-            <marker date="1496473989000" expanded="true" signature="5331:5364" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="2051:2070" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="2307:2325" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="2997:3010" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="3607:3618" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="3836:3853" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="3934:3974" ph="..." />
+            <marker date="1496482373000" expanded="false" signature="4805:4819" ph="..." />
+            <marker date="1496482373000" expanded="true" signature="5331:5364" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+          <folding>
+            <element signature="e#3379#3380#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#4123#4133#0" expanded="true" />
           </folding>
         </state>
       </provider>
