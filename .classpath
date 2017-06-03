@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="StructAnalyze"/>
-	<classpathentry kind="src" path="utils"/>
-	<classpathentry kind="src" path="pagerank"/>
-	<classpathentry kind="src" path="pageExtract"/>
-	<classpathentry kind="src" path="DOC"/>
-	<classpathentry kind="src" path="DocumentWriter"/>
-	<classpathentry kind="src" path="IndexWriter"/>
-	<classpathentry kind="src" path="IndexSearcher"/>
-	<classpathentry kind="src" path="Mongo"/>
-	<classpathentry kind="src" path="Log"/>
-	<classpathentry kind="src" path="User"/>
-	<classpathentry kind="src" path="jar"/>
-	<classpathentry kind="src" path="HotQuery"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-ooxml-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-scratchpad-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-excelant-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-examples-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="jar/DOC/poi-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="DOC"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="jar/JSON/org.json.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/servlet/servlet-api-2.5-6.1.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/fontbox-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/pdfbox-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/pdfbox-debugger-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/pdfbox-tools-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/preflight-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/PDF/xmpbox-2.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/mongoDB/mongo-java-driver-3.4.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/lucene/IKAnalyzer3.2.5Stable.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/lucene/lucene-core-3.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/lucene/lucene-highlighter-3.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/lucene/lucene-memory-3.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/filterbuilder.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/htmllexer.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/htmlparser.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/sax2.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/lib/thumbelina.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/htmlparser/src0_82.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/heritrix/bsh-2.0b5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/heritrix/heritrix-commons-3.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/heritrix/heritrix-engine-3.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/heritrix/heritrix-modules-3.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/DOC/lib/commons-codec-1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/DOC/lib/commons-logging-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/DOC/lib/junit-4.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="jar/DOC/lib/log4j-1.2.13.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/libraries"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/src0_82"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/filterbuilder"/>
