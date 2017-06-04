@@ -11,7 +11,25 @@
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
+    <style>
+        .navbar-nav>li>a {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .navbar-brand {
+            height: 30px;
+            padding-top: 10px;
+        }
+        .navbar {
+            min-height: 30px;
+        }
 
+
+        .navbar-toggle {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+    </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,6 +55,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:change();">更换背景</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        关于我们
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">2014011410 计45 江天</a></li>
+                        <li><a href="#">2014011410 计45 张琛昱</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">搜索引擎技术基础</a></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -69,14 +99,6 @@
         </div>
     </div>
 </div>
-<footer class="footer">
-    <div align="center">
-            搜索引擎技术基础&nbsp;&nbsp;|&nbsp;&nbsp;计45&nbsp;&nbsp;
-            江天&nbsp;&nbsp;2014011410&nbsp;&nbsp;
-            张琛昱&nbsp;&nbsp;2014011401
-    </div>
-</footer>
-
 </body>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -84,11 +106,11 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
     });
 
-    change = function() {
+    change = function () {
         //console.log("into");
         var ran = Math.floor(Math.random() * 8) + 1;
         //console.log('random:' + ran);

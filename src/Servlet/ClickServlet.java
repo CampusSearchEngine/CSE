@@ -28,6 +28,7 @@ public class ClickServlet extends HttpServlet {
         PrintWriter pWriter = res.getWriter();
         pWriter.println("acknowledged");
         pWriter.close();
+        System.out.println("click: " + URL);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
