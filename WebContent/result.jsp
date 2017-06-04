@@ -46,7 +46,8 @@
                         </button>
                     </td>
                     <td style="padding-left: 20px;">
-                        <button class="button button-royal button-rounded button-small" onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">
+                        <button class="button button-royal button-rounded button-small"
+                                onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">
                             校外搜索
                         </button>
                     </td>
@@ -71,7 +72,7 @@
 
         <div id="<%=i + 1%>" class="entry">
             <div class="link">
-                <a href="http://<%=vec.elementAt(i).getLink()%>"><%=vec.elementAt(i).getTitle()%>
+                <a href="javascript:jump('<%=vec.elementAt(i).getCom_link()%>')"><%=vec.elementAt(i).getTitle()%>
                 </a>
             </div>
             <div>
@@ -103,7 +104,7 @@
             }
         %>
     </div>
-    <div class="attachment col-xs-3" style="padding-left: 40px;">
+    <div class="attachment col-xs-3" style="padding-left: 20px;">
         <h5>实时热搜榜</h5>
         <canvas id="hot_query" width="400" height="400">
 
@@ -193,7 +194,8 @@
                     </button>
                 </td>
                 <td style="padding-left: 20px;">
-                    <button class="button button-royal button-rounded button-small" onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索
+                    <button class="button button-royal button-rounded button-small"
+                            onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索
                     </button>
                 </td>
             </tr>
@@ -257,6 +259,11 @@
                         ticks: {
                             beginAtZero: true
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
                 }
             }
@@ -291,6 +298,23 @@
         });
 
     });
+
+    jump = function (url) {
+        $.post('/click',
+            {
+                'query': $('.search_input').val(),
+                'URL': url
+            },
+        function(data) {
+            console.log(data);
+            if($.trim(data) == 'acknowledged') {
+                console.log("gonna open http://" + url);
+                window.open("http://" + url);
+            }
+
+        });
+
+    }
 </script>
 </body>
 </html>

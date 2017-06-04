@@ -20,4 +20,12 @@
         <servlet-name>MisscutServlet</servlet-name>
         <url-pattern>/correction</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ClickServlet</servlet-name>
+        <servlet-class>Servlet.ClickServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClickServlet</servlet-name>
+        <url-pattern>/click</url-pattern>
+    </servlet-mapping>
 </web-app>

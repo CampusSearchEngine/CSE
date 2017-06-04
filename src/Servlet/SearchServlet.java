@@ -134,6 +134,8 @@ public class SearchServlet extends HttpServlet {
             eb.setTitle(document.get("title"));
             eb.setAbst(document.get("content"));
             String url = document.get("URI");
+            url = url.replaceAll("\\\\", "/");
+            eb.setCom_link(url);
             if(url.length() > 45) {
                 url = url.substring(0, 45) + "...";
             }

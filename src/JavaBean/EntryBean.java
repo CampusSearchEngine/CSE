@@ -11,6 +11,7 @@ public class EntryBean {
     private String abst;
     private Date date;
     private String type;
+    private String com_link;
 
     public String getLink() {
         return link;
@@ -50,6 +51,14 @@ public class EntryBean {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCom_link() {
+        return com_link;
+    }
+
+    public void setCom_link(String com_link) {
+        this.com_link = com_link;
     }
 
 

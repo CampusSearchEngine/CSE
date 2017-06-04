@@ -28,7 +28,6 @@ public class ClickServlet extends HttpServlet {
         PrintWriter pWriter = res.getWriter();
         pWriter.println("acknowledged");
         pWriter.close();
-        req.getRequestDispatcher("/HotQuery.jsp").forward(req, res);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
