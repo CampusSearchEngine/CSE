@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5647a69d-3048-4a8f-9522-d76489799db9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Servlet/MisscutServlet.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Servlet/HotQueryServlet.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/css/result.css" afterPath="$PROJECT_DIR$/WebContent/css/result.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/index.html" afterPath="$PROJECT_DIR$/WebContent/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/result.jsp" afterPath="$PROJECT_DIR$/WebContent/result.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java" afterPath="$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Servlet/MisscutServlet.java" afterPath="$PROJECT_DIR$/src/Servlet/MisscutServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Servlet/SearchServlet.java" afterPath="$PROJECT_DIR$/src/Servlet/SearchServlet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -22,27 +19,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="result.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebContent/result.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="280" column="78" lean-forward="false" selection-start-line="280" selection-start-column="78" selection-end-line="280" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1496514911000" expanded="true" signature="5663:5696" ph="..." />
-                <marker date="1496514911000" expanded="true" signature="9769:9779" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MisscutServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Servlet/MisscutServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+            <state relative-caret-position="459">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,11 +34,9 @@
       <file leaf-file-name="SearchServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Servlet/SearchServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1191">
-              <caret line="65" column="11" lean-forward="false" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
-              <folding>
-                <marker date="1496511854000" expanded="false" signature="1582:1590" ph="&lt;~&gt;" />
-              </folding>
+            <state relative-caret-position="-1945">
+              <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,9 +44,21 @@
       <file leaf-file-name="CampusSearcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="105" column="37" lean-forward="false" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
+            <state relative-caret-position="391">
+              <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="95" column="50" lean-forward="false" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,7 +118,6 @@
         <option value="$PROJECT_DIR$/IndexSearcher/indexSearcher/CampusSearcher.java" />
         <option value="$PROJECT_DIR$/WebContent/js/index.js" />
         <option value="$PROJECT_DIR$/WebContent/js/result.js" />
-        <option value="$PROJECT_DIR$/WebContent/index.html" />
         <option value="$PROJECT_DIR$/servlet/bean/HotQueryBean.java" />
         <option value="$PROJECT_DIR$/servlet/serv/SearchServlet.java" />
         <option value="$PROJECT_DIR$/CSE.iml" />
@@ -138,10 +128,11 @@
         <option value="$PROJECT_DIR$/WebContent/css/result.css" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/js/ajaxCookies.js" />
-        <option value="$PROJECT_DIR$/src/Servlet/SearchServlet.java" />
-        <option value="$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java" />
         <option value="$PROJECT_DIR$/src/Servlet/MisscutServlet.java" />
+        <option value="$PROJECT_DIR$/src/Servlet/SearchServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/result.jsp" />
+        <option value="$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java" />
+        <option value="$PROJECT_DIR$/WebContent/index.html" />
       </list>
     </option>
   </component>
@@ -278,24 +269,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -311,6 +284,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Servlet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IndexSearcher" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -968,15 +977,16 @@
       <workItem from="1496495237645" duration="575000" />
       <workItem from="1496495893289" duration="2633000" />
       <workItem from="1496499746896" duration="422000" />
-      <workItem from="1496500203669" duration="11926000" />
+      <workItem from="1496500203669" duration="14088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81069000" />
+    <option name="totallyTimeSpent" value="83231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -994,7 +1004,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30048466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30048466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1070,13 +1080,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/js/result.js" />
     <entry file="file://$PROJECT_DIR$/WebContent/js/index.js" />
-    <entry file="file://$PROJECT_DIR$/WebContent/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="94" column="60" lean-forward="false" selection-start-line="94" selection-start-column="60" selection-end-line="94" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JavaBean/HotQueryBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11">
@@ -1231,14 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/result.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="68" column="13" lean-forward="false" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlet/HotQueryServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1286,44 +1281,63 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="105" column="37" lean-forward="false" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Servlet/SearchServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1191">
-          <caret line="65" column="11" lean-forward="false" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
-          <folding>
-            <marker date="1496511854000" expanded="false" signature="1582:1590" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlet/MisscutServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+        <state relative-caret-position="459">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlet/SearchServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1945">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/result.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="64" column="1" lean-forward="false" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/result.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="280" column="78" lean-forward="false" selection-start-line="280" selection-start-column="78" selection-end-line="280" selection-end-column="78" />
+        <state relative-caret-position="146">
+          <caret line="181" column="71" lean-forward="false" selection-start-line="181" selection-start-column="71" selection-end-line="181" selection-end-column="71" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1496514911000" expanded="true" signature="5663:5696" ph="..." />
-            <marker date="1496514911000" expanded="true" signature="9769:9779" ph="..." />
+            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1496555780000" expanded="true" signature="5952:5985" ph="..." />
+            <marker date="1496555780000" expanded="true" signature="10169:10179" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IndexSearcher/CampusSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="105" column="28" lean-forward="true" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="95" column="50" lean-forward="false" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

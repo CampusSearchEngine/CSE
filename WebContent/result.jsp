@@ -46,7 +46,9 @@
                         </button>
                     </td>
                     <td style="padding-left: 20px;">
-                        <button onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索</button>
+                        <button class="button button-royal button-rounded button-small" onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">
+                            校外搜索
+                        </button>
                     </td>
                 </tr>
             </table>
@@ -55,8 +57,10 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="options col-xs-2" style="margin-left: 3.5%;">
-
+    <div class="options col-xs-2" style="width: 250px;">
+        <h5>教务公告</h5>
+        <iframe src="http://info.tsinghua.edu.cn/drupal/jwgg.html" name="aa" width="220" height="500" scrolling="no"
+                frameborder="0" id="aa"></iframe>
     </div>
     <div class="content col-xs-6">
         <%
@@ -142,7 +146,7 @@
 </div>
 
 <div class="footer container-fluid">
-    <div class="col-md-2" style="margin-left: 3.5%"></div>
+    <div class="col-md-2" style="width: 250px;"></div>
     <div class="col-md-6">
 
         <%
@@ -175,7 +179,7 @@
     </div>
 </div>
 
-<div style="padding: 24px 10px 30px 80px" class="col-xs-offset-2">
+<div style="padding-top: 24px;padding-left: 80px; padding-bottom: 40px;" class="col-md-offset-2">
     <form action="search">
         <table>
             <tr>
@@ -189,7 +193,8 @@
                     </button>
                 </td>
                 <td style="padding-left: 20px;">
-                    <button onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索</button>
+                    <button class="button button-royal button-rounded button-small" onclick="window.location='https://www.baidu.com/s?wd=<%=rb.getKey()%>'" type="button">校外搜索
+                    </button>
                 </td>
             </tr>
         </table>
@@ -258,8 +263,8 @@
         });
 
         var text = $('.search_input').val();
-        text = {"text":text};
-        $.post("/correction", text, function(data, status) {
+        text = {"text": text};
+        $.post("/correction", text, function (data, status) {
             data = JSON.parse(data);
             console.log(data);
             var result = data.result;
@@ -267,7 +272,7 @@
             var word = "";
             var error = false;
             for (var i = 0; i < result.length; i++) {
-                if(result[i].t == 0 || result[i].t > 9) {
+                if (result[i].t == 0 || result[i].t > 9) {
                     html += result[i].n;
                     word += result[i].n;
                 } else {
@@ -279,7 +284,7 @@
             html += "</a>";
             $('#correction').html(html);
             $('#cor_link').attr("href", "search?key=" + word + "&page_num=1");
-            if(error) {
+            if (error) {
                 $('#correct_ctl').attr('hidden', false);
             }
             console.log(data);

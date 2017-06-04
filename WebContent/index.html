@@ -31,22 +31,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">商标</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">后续功能<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">功能1</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">功能2</a></li>
-                    </ul>
-                </li>
+                <li><a href="javascript:change();">更换背景</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -97,5 +87,13 @@
     $(document).ready(function() {
 
     });
+
+    change = function() {
+        console.log("into");
+        var ran = Math.floor(Math.random() * 8) + 1;
+        console.log('random:' + ran);
+        $('body').css('background', 'url("pic/tsinghua' + ran + '.jpg") no-repeat fixed bottom center');
+        $('body').css('background-size', 'cover');
+    }
 </script>
 </html>
